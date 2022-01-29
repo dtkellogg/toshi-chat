@@ -2,11 +2,14 @@ const express = require("express");
 const http = require("http");
 const path = require("path");
 const socketIo = require("socket.io");
+const dotenv = require("dotenv");
 const colors = require("colors");
 
 // middleware
 const cors = require("cors")
 const { corsMiddleware } = require('./middleware/corsMiddleware')
+
+dotenv.config();  // env variables
 
 const app = express();
 app.use(express.json());
@@ -34,21 +37,32 @@ const PORT = process.env.PORT || 5000
 
 const server = http.createServer(app).listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
 
-const io = socketIo(server, {cors: {origin: "https://toshi-chat.herokuapp.com/"}});
+const io = socketIo(server, {cors: {origin: "*"}});
+// const io = socketIo(server, {cors: {origin: process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://toshi-chat.herokuapp.com/"}});
 
 io.on("connection", (socket) => {
+  const users = new Map()
+
   console.log(`${io.engine.clientsCount} connections`);
 
   socket.on('chat', ({msg, name}) => {
     io.sockets.emit('msg', msg, name, "purple")
   })
 
-  socket.on('new-user', () => {
-    socket.broadcast.emit('new-user', "A new user has entered the chat.", "green")
+  socket.on('new-user', (name) => {
+    console.log("NAME");
+    console.log(name);
+    users.set(socket.id, name)
+    socket.broadcast.emit('new-user', `${name} has entered the chat.`, "green")
   })
 
+    console.log(users);
+
+
   socket.on("disconnect", (name) => {
+    console.log("MAP");
+    console.log(users);
     console.log(`disconnect: ${socket.id}`);
-    socket.broadcast.emit('user-gone', `${name} has left the chat.`, "red")
+    socket.broadcast.emit('user-gone', `${users.get(socket.id)} has left the chat.`, "red")
   });
 });

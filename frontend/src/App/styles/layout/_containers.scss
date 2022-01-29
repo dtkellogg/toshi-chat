@@ -1,0 +1,78 @@
+// ------------- main ------------- //
+
+.container {
+
+  &__main {
+    text-align: center;
+    background-color: rgb(20, 20, 143);
+    height: calc(100vh - 10rem);
+    width: calc(100vw - 10rem);
+    padding: 5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// ------------- login ------------- //
+
+.login {
+  &__container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// ------------- chat ------------- //
+
+.chat {
+  &__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: white;
+  }
+}
+
+
+.msg {
+  &__container {
+    height: calc(100% - 5rem);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    &--container {
+      display: flex;
+      height: 5rem;
+      width: 100%;
+      overflow: scroll;
+      position: absolute;
+      bottom: 0
+    }
+  }
+}
+
+.inputs {
+  &__container {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    grid-template-rows: repeat(2, 3.25rem);
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    margin-top: 1.5rem;
+    
+  }
+}

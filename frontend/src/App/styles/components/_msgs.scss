@@ -1,0 +1,30 @@
+.msg {
+  &__self {
+    margin: 0.25rem 0.5rem;
+    align-self: flex-end;
+    background-color: skyblue;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    height: 1.5rem;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  &__other {
+    margin: 0.25rem 0.5rem;
+    align-self: flex-start;
+    background-color: grey;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    height: 1.5rem;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
