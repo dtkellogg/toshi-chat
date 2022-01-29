@@ -28,6 +28,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 25%;
+    background-color: transparent;
   }
 }
 
@@ -40,10 +44,17 @@
 .btn {
   &__back {
     position: absolute;
-    top: 1.75rem;
+    top: 1.25rem;
     left: 1.75rem;
     border: none;
     background-color: transparent;
     cursor: pointer;
+  }
+}
+
+.msg {
+  &__input {
+    &--btn {
+    }
   }
 }

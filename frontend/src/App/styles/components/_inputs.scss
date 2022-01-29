@@ -2,7 +2,7 @@
 
   &__name {
     padding: 0 0.5rem;
-    height: 2.75rem;
+    height: 3.75rem;
     width: 35rem;
     overflow: scroll;
     justify-content: center;
@@ -10,12 +10,14 @@
     transform: translateY(10rem);
     border-radius: 1rem;
     border: 1px solid black;
+    font-size: 2rem;
   }
   
   &__msg {
     justify-self: flex-start;
     width: 100%;
     padding: 0 0.5rem;
+    font-size: 2rem;
     // border-radius: 1rem;
   }
 

@@ -8,14 +8,14 @@ export default function Msgs({ name, socket }) {
       setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, name: name, color: color, time: new Date().toLocaleTimeString()}]);
     })
 
-    socket.on('new-user', (msg, color) => {
+    socket.on('new-user', (msg, color, notification) => {
       console.log("MSG");
       console.log(msg);
-      setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, color: color, time: new Date().toLocaleTimeString()}]);
+      setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, color: color, notification: notification, time: new Date().toLocaleTimeString()}]);
     })
 
-    socket.on('user-gone', (msg, color) => {
-      setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, color: color, time: new Date().toLocaleTimeString()}]);
+    socket.on('user-gone', (msg, color, notification) => {
+      setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, color: color, notification: notification, time: new Date().toLocaleTimeString()}]);
     })
 
     return (name) => socket.disconnect(name)
@@ -26,25 +26,24 @@ export default function Msgs({ name, socket }) {
     objDiv.scrollTop = objDiv.scrollHeight;
   }, [msgs])
 
-  // console.log('MSGS');
-  // console.log(msgs);
-  // console.log('NAME');
-  // console.log(name);
 
   return (
     <div className="msg__container" id="msg-container">
       {msgs.map((m) => {
-        // console.log('m.name === name');
-        // console.log(m.name === name);
 
         return (
-          (m.name === name) ? (
-            <div className="msg__self" style={{'fontSize': '13px'}}>
+          (m.notification) ? (
+            <div className="msg__person--notification" style={{'fontSize': '13px'}}>
+              {/* <span className="" style={{'color': m.color}, {'fontWeight': 'bold'}}>{m.time}: </span> */}
+              <span className="">{m.msg}</span>
+            </div>
+          ) : (m.name === name) ? (
+            <div className="msg__person--self" style={{'fontSize': '13px'}}>
               {/* <span className="" style={{'color': m.color}, {'fontWeight': 'bold'}}>{m.time}: </span> */}
               <span className="">{m.msg}</span>
             </div>
           ) : (
-            <div className="msg__other" style={{'fontSize': '13px'}}>
+            <div className="msg__person--other" style={{'fontSize': '13px'}}>
               {/* <span className="" style={{'color': m.color}, {'fontWeight': 'bold'}}>{m.time}: </span> */}
               <span className="">{m.msg}</span>
             </div>
@@ -55,13 +54,3 @@ export default function Msgs({ name, socket }) {
     </div>
   )
 }
-
-
-
-
-{/* <div className="msg">
-  <span className="" style={{'color': m.color}, {'fontWeight': 'bold'}}>{m.time}: </span>
-  <span className="" style={{'color': m.color}, {'fontWeight': 'bold'}}>{m.name.toUpperCase()}: </span>
-  <span className="">{m.msg}</span>
-  {/* {`${m.name}: ${m.msg}`}
-</div> */}
