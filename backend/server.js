@@ -37,8 +37,8 @@ const PORT = process.env.PORT || 5000
 
 const server = http.createServer(app).listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
 
-const io = socketIo(server, {cors: {origin: "*"}});
-// const io = socketIo(server, {cors: {origin: process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://toshi-chat.herokuapp.com/"}});
+// const io = socketIo(server, {cors: {origin: "*"}});
+const io = socketIo(server, {cors: {origin: process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://toshi-chat.herokuapp.com/"}});
 
 io.on("connection", (socket) => {
   const users = new Map()
