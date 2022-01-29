@@ -1,0 +1,33 @@
+{
+  "name": "toshi-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtkellogg/toshi-chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dtkellogg/toshi-chat/issues"
+  },
+  "homepage": "https://github.com/dtkellogg/toshi-chat#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "jest": "^27.4.7"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "socket.io": "^4.4.1"
+  }
+}
