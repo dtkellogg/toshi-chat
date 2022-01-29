@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './App.css';
 import io from 'socket.io-client'
 
-const socket = io.connect('http://localhost:5000')
+// const socket = io.connect('http://localhost:5000')
+const socket = io.connect('https://toshi-chat.herokuapp.com/')
 
 function App() {
   

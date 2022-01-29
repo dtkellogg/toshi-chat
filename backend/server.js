@@ -4,7 +4,6 @@ const path = require("path");
 const socketIo = require("socket.io");
 const colors = require("colors");
 
-
 // middleware
 const cors = require("cors")
 const { corsMiddleware } = require('./middleware/corsMiddleware')
@@ -35,7 +34,7 @@ const PORT = process.env.PORT || 5000
 
 const server = http.createServer(app).listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
 
-const io = socketIo(server, {cors: {origin: "http://localhost:3000"}});
+const io = socketIo(server, {cors: {origin: "https://toshi-chat.herokuapp.com/"}});
 
 io.on("connection", (socket) => {
   console.log(`${io.engine.clientsCount} connections`);
