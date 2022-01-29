@@ -5,9 +5,21 @@ const socketIo = require("socket.io");
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("API is running....");
-});
+//---------------------- static build files for react side of app ----------------------//
+
+const modifiedPath = __dirname.split('/').slice(0, -1).join('/')
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(modifiedPath, "/frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(modifiedPath, "frontend", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
 const server = http.createServer(app).listen(5000, () => console.log(`Listening on port 5000`));
 
