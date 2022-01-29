@@ -28,7 +28,10 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const server = http.createServer(app).listen(5000, () => console.log(`Listening on port 5000`));
+const PORT = process.env.PORT || 5000
+
+
+const server = http.createServer(app).listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
 
 const io = socketIo(server, {cors: {origin: "http://localhost:3000"}});
 
