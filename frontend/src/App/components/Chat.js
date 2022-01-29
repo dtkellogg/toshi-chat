@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from "react-router-dom"
-import Inputs from './Inputs'
+import { useLocation, useNavigate } from "react-router-dom"
+import Inputs from './NewMsg'
 import Msgs from './Msgs'
 import io from 'socket.io-client'
 
@@ -9,11 +9,12 @@ const socket = io.connect("http://localhost:5000")
 
 export default function Chat() {
   const { state: name } = useLocation()
+  const navigate = useNavigate()
 
-  // console.log("STATE");
-  // console.log(name);
+  console.log(`name: ${name}`);
   
   useEffect(() => {
+    if(!name) navigate('/')
     socket.emit('new-user', name)
 
     return (name) => socket.disconnect(name)

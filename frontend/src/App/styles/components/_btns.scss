@@ -14,6 +14,7 @@
     font-weight: 300;
     cursor: pointer;
     margin: 2.5rem auto;
+    transform: translateY(10rem);
   }
 }
 
@@ -21,15 +22,28 @@
 
 .chat {
   &__btn {
-    width: 20rem;
-    display: block;
-    width: 200px;
-    height: 100%;
-    background-color: #1c89ff;
-    border: solid 1px transparent;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 300;
+    width: 2rem;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.icon {
+  &__back {
+    height: 3rem;
+  }
+}
+
+.btn {
+  &__back {
+    position: absolute;
+    top: 1.75rem;
+    left: 1.75rem;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
   }
 }
