@@ -5,12 +5,10 @@ const socketIo = require("socket.io");
 
 // middleware
 const cors = require("cors")
-const compression = require('compression')
 const { corsMiddleware } = require('./middleware/corsMiddleware')
 
 const app = express();
 app.use(express.json());
-app.use(compression({ threshold: 0 }));  // compress responses
 app.use(cors())  // CORS
 app.use(corsMiddleware);
 
