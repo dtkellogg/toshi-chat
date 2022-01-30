@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Chat from './components/Chat';
 import Login from './components/Login';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { FaChevronLeft } from 'react-icons/fa'
+import io from 'socket.io-client'
 
+let socket 
+// const socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
 
 function App() {
   const location = useLocation();
@@ -11,8 +14,14 @@ function App() {
 
   const handleClick = (e) => {
     e.preventDefault();
+    socket.emit('user-left')
     navigate('/');
   }
+
+  useEffect(() => {
+    socket = io.connect("http://localhost:5000")
+    return () => socket.disconnect()
+  }, [])
 
   console.log(`location`);
   console.log(location);
@@ -26,8 +35,8 @@ function App() {
       }
 
       <Routes location={location}>
-        <Route path="/" element={<Login />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/" element={<Login socket={socket}/>} />
+        <Route path="/chat" element={<Chat socket={socket}/>} />
       </Routes>
     </div>
   );

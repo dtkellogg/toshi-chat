@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Msgs({ name, socket }) {
   const [msgs, setMsgs] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
-    socket.on('msg', (msg, name, color) => {
-      setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, name: name, color: color, time: new Date().toLocaleTimeString()}]);
-    })
-
-    socket.on('new-user', (msg, color, notification) => {
-      console.log("MSG");
-      console.log(msg);
-      setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, color: color, notification: notification, time: new Date().toLocaleTimeString()}]);
-    })
-
-    socket.on('user-gone', (msg, color, notification) => {
-      setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, color: color, notification: notification, time: new Date().toLocaleTimeString()}]);
-    })
-
-    return (name) => socket.disconnect(name)
+    if(socket === undefined) {
+      console.log("UNDEFINED");
+      navigate('/')
+    } else {
+      socket.on('msg', (msg, name, color) => {
+        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, name: name, color: color, time: new Date().toLocaleTimeString()}]);
+      })
+  
+      socket.on('new-user', (msg, color, notification) => {
+        console.log("MSG");
+        console.log(msg);
+        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, color: color, notification: notification, time: new Date().toLocaleTimeString()}]);
+      })
+  
+      socket.on('user-gone', (msg, color, notification) => {
+        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, color: color, notification: notification, time: new Date().toLocaleTimeString()}]);
+      })
+    }
   }, [socket])
 
   useEffect(() => {

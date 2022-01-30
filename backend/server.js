@@ -37,32 +37,34 @@ const PORT = process.env.PORT || 5000
 
 const server = http.createServer(app).listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold));
 
-// const io = socketIo(server, {cors: {origin: "*"}});
-const io = socketIo(server, {cors: {origin: process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://toshi-chat.herokuapp.com/"}});
+const io = socketIo(server, {cors: {origin: "*"}});
+// const io = socketIo(server, {cors: {origin: process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "https://toshi-chat.herokuapp.com/"}});
+const users = new Map()
 
 io.on("connection", (socket) => {
-  const users = new Map()
-
   console.log(`${io.engine.clientsCount} connections`);
+  console.log(users);
 
   socket.on('chat', ({msg, name}) => {
     io.sockets.emit('msg', msg, name, "purple")
   })
 
   socket.on('new-user', (name) => {
-    // console.log("NAME");
-    // console.log(name);
     users.set(socket.id, name)
+    console.log(users);
+    console.log(users.size);
     socket.broadcast.emit('new-user', `${name} has entered the chat`, "green", true)
   })
 
-    console.log(users);
-
+  socket.on('user-left', () => {
+    socket.broadcast.emit('user-gone', `${users.get(socket.id)} has left the chat`, "red", true)
+    users.delete(socket.id)
+  })
 
   socket.on("disconnect", (name) => {
-    console.log("MAP");
-    console.log(users);
     console.log(`disconnect: ${socket.id}`);
-    socket.broadcast.emit('user-gone', `${users.get(socket.id)} has left the chat`, "red", true)
+    users.get(socket.id) && socket.broadcast.emit('user-gone', `${users.get(socket.id)} has left the chat`, "red", true)
+    users.delete(socket.id)
+    console.log(users.size);
   });
 });
