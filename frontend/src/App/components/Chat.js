@@ -4,8 +4,8 @@ import Inputs from './NewMsg'
 import Msgs from './Msgs'
 import io from 'socket.io-client'
 
-let socket = io.connect("http://localhost:5000")
-// const socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
+// let socket = io.connect("http://localhost:5000")
+const socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
 
 export default function Chat() {
   const { state: name } = useLocation()
@@ -15,7 +15,8 @@ export default function Chat() {
   
   useEffect(() => {
     if(!name) navigate('/')
-    if(!socket.connected) socket = io.connect("http://localhost:5000")
+    if(!socket.connected) socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
+    // if(!socket.connected) socket = io.connect("http://localhost:5000")
     socket.emit('new-user', name)
 
     return (name) => socket.disconnect(name)
