@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="container__main">
       {location.pathname === '/chat' && 
-        <button className="btn__back" onClick={(e) => handleClick(e)} name="back-btn">
+        <button className="btn__back" onClick={(e) => handleClick(e)} aria-label="Back button">
           <FaChevronLeft className="icon__back" />
         </button>
       }

@@ -23,7 +23,7 @@ export default function Login() {
       <h1 className="login__header">Toshi's Chat</h1>
       {/* <label className="input__label--name">Name: </label> */}
         <input className="input__name" placeholder="Name:" onChange={e => setName(e.target.value)} onKeyPress={(e) => handleKeyPress(e)} value={name} />
-      <button className="login__btn" disabled={!name} onClick={(e) => handleSubmit(e)} name="login">Login</button>
+      <button className="login__btn" disabled={!name} onClick={(e) => handleSubmit(e)} aria-label="Login">Login</button>
     </div>
   )
 }
