@@ -50,10 +50,10 @@ io.on("connection", (socket) => {
   })
 
   socket.on('new-user', (name) => {
-    console.log("NAME");
-    console.log(name);
+    // console.log("NAME");
+    // console.log(name);
     users.set(socket.id, name)
-    socket.broadcast.emit('new-user', `${name} has entered the chat.`, "green", true)
+    socket.broadcast.emit('new-user', `${name} has entered the chat`, "green", true)
   })
 
     console.log(users);
@@ -63,6 +63,6 @@ io.on("connection", (socket) => {
     console.log("MAP");
     console.log(users);
     console.log(`disconnect: ${socket.id}`);
-    socket.broadcast.emit('user-gone', `${users.get(socket.id)} has left the chat.`, "red", true)
+    socket.broadcast.emit('user-gone', `${users.get(socket.id)} has left the chat`, "red", true)
   });
 });

@@ -4,7 +4,7 @@ import Inputs from './NewMsg'
 import Msgs from './Msgs'
 import io from 'socket.io-client'
 
-const socket = io.connect("http://localhost:5000")
+let socket = io.connect("http://localhost:5000")
 // const socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
 
 export default function Chat() {
@@ -15,10 +15,14 @@ export default function Chat() {
   
   useEffect(() => {
     if(!name) navigate('/')
+    if(!socket.connected) socket = io.connect("http://localhost:5000")
     socket.emit('new-user', name)
 
     return (name) => socket.disconnect(name)
   }, [])
+
+  console.log(`socket:`)
+  console.log(socket)
 
 
   return (

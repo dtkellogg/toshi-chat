@@ -35,7 +35,7 @@ export default function Msgs({ name, socket }) {
           (m.notification) ? (
             <div className="msg__person--notification" style={{'fontSize': '13px'}}>
               {/* <span className="" style={{'color': m.color}, {'fontWeight': 'bold'}}>{m.time}: </span> */}
-              <span className="">{m.msg}</span>
+              <span className="">{m.msg} ({m.time})</span>
             </div>
           ) : (m.name === name) ? (
             <div className="msg__person--self" style={{'fontSize': '13px'}}>
@@ -44,7 +44,7 @@ export default function Msgs({ name, socket }) {
             </div>
           ) : (
             <div className="msg__person--other" style={{'fontSize': '13px'}}>
-              {/* <span className="" style={{'color': m.color}, {'fontWeight': 'bold'}}>{m.time}: </span> */}
+              <span className="" style={{'color': m.color}, {'fontWeight': 'bold'}}>{m.name}: &nbsp;</span>
               <span className="">{m.msg}</span>
             </div>
             
