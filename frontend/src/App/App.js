@@ -18,7 +18,6 @@ function App() {
   }
 
   useEffect(() => {
-    // socket = io.connect("http://localhost:5000")
     socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
     return () => socket.disconnect()
   }, [])

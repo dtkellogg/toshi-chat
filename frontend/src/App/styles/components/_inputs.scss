@@ -10,15 +10,19 @@
     transform: translateY(10rem);
     border-radius: 1rem;
     border: 1px solid black;
+    padding: 0 1rem;
     font-size: 2rem;
+    border-radius: 2rem;
+    border: none;
   }
   
   &__msg {
     justify-self: flex-start;
     width: 100%;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
     font-size: 2rem;
-    // border-radius: 1rem;
+    border-radius: 2rem;
+    border: none;
   }
 
   &__label {
