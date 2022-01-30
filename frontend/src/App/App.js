@@ -6,7 +6,6 @@ import { FaChevronLeft } from 'react-icons/fa'
 import io from 'socket.io-client'
 
 let socket 
-// const socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
 
 function App() {
   const location = useLocation();
@@ -19,7 +18,8 @@ function App() {
   }
 
   useEffect(() => {
-    socket = io.connect("http://localhost:5000")
+    // socket = io.connect("http://localhost:5000")
+    socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
     return () => socket.disconnect()
   }, [])
 
