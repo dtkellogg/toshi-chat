@@ -1,0 +1,71 @@
+// ------------- login ------------- //
+
+.login {
+  &__btn {
+    width: 20rem;
+    display: block;
+    width: 200px;
+    height: 36px;
+    border-radius: 18px;
+    background-color: #1c89ff;
+    border: solid 1px transparent;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    margin: 2.5rem auto;
+    // transform: translateY(10rem);
+  }
+}
+
+// ------------- chat ------------- //
+
+.chat {
+  &__btn {
+    width: 3rem;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 1rem;
+    top: 18%;
+    background-color: transparent;
+    right: 2rem;
+    top: 41%;
+  }
+}
+
+.icon {
+  &__back, &__settings {
+    height: 3rem;
+    fill: white;
+  }
+}
+
+.btn {
+  &__back, &__settings {
+    position: absolute;
+    top: 1.25rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__back {
+    left: 1.75rem;
+  }
+
+  &__settings {
+    right: 1.75rem;
+  }
+}
+
+.msg {
+  &__input {
+    &--btn {
+      fill: $blue;
+    }
+  }
+}

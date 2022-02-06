@@ -1,0 +1,30 @@
+// ------------- login ------------- //
+
+.login {
+  &__header {
+    color: $white;
+    font-size: 7rem;
+    margin-bottom: 4.5rem;
+  }
+}
+
+// ------------- msgs ------------- //
+
+// .msg {
+//   &__person {
+//     &--s
+//   }
+// }
+
+// ------------- input ------------- //
+
+
+/* ---------------------- external font family ---------------------- */
+
+@font-face {
+  font-family: 'gorditaregular';
+  src: url('../../fonts/gordita_regular-webfont.woff2') format('woff2'),
+       url('../../fonts/gordita_regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

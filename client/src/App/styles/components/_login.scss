@@ -1,0 +1,106 @@
+.container__login {
+  height: 50rem;
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: $color-quaternary;
+  border-radius: 2rem;
+}
+
+.container__inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40rem;
+  background-color: $color-quaternary;
+}
+
+/* ---------------------- form (inputs && labels) ---------------------- */
+
+.label__email, .label__password, .label__password--confirm {
+  align-self: flex-start;
+  margin-left: 0.5rem;
+  color: $black;
+}
+
+.input__email, .input__password, .input__password--confirm {
+  height: 4rem;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 0 0.5rem;
+}
+
+.input__email, .input__password {
+  margin-bottom: 1.75rem;
+}
+
+.input__password--confirm {
+  margin-bottom: 2rem;
+}
+
+.input__email:focus, .input__password:focus {
+  outline: none;
+  border-bottom: 1px solid #0099ff;
+  background-color: $color-quaternary;
+}
+
+/* ---------------------- btns ---------------------- */
+
+.btn__login {
+  height: 4.0rem;
+  width: 40rem;
+  border-radius: 4rem;
+  color: $white;
+  background-color: #0099ff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------------------- animations ---------------------- */
+
+.contact__loader {
+  transform: translateY(.2rem)
+}
+
+/* ---------------------- typography ---------------------- */
+
+.header__login {
+  font-size: 3rem;
+  color: $black;
+}
+
+.label__email, .label__password, .label__password--confirm {
+  font-size: 1.75rem;
+}
+
+.input__email, .input__password {
+  font-size: 1.5rem;
+}
+
+.to-register {
+  font-size: 1.25rem;
+  color: $black;
+}
+
+.link__register {
+  color: #0099ff;
+  cursor: pointer;
+}
+
+.link__forgot-password {
+  color: #0099ff;
+  font-size: 1.25rem;
+  align-self: start;
+  cursor: pointer;
+}
+
+.btn__login {
+  font-size: 1.5rem;
+}

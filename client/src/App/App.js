@@ -1,0 +1,35 @@
+import React, {useEffect} from 'react'
+import { ToastProvider } from "react-toast-notifications";
+import Chat from './components/Chat';
+import Upload from './components/Upload';
+import Login from './components/Login';
+import Register from './components/Register';
+import { Routes, Route, useLocation } from 'react-router-dom'
+import io from 'socket.io-client'
+
+let socket 
+
+function App() {
+  const location = useLocation()
+
+  useEffect(() => {
+    socket = io.connect(process.env.REACT_APP_ENV === 'development' ? "http://localhost:5000" : 'https://toshi-chat.herokuapp.com/')
+    return () => socket.disconnect()
+  }, [])
+
+
+  return (
+    <ToastProvider>
+      <div className="container__main">
+        <Routes location={location}>
+          <Route path="/" element={<Login socket={socket}/>} />
+          <Route path="/register" element={<Register socket={socket}/>} />
+          <Route path="/chat" element={<Chat socket={socket}/>} />
+          <Route path="/upload" element={<Upload/>} />
+        </Routes>
+      </div>
+    </ToastProvider>
+  );
+}
+
+export default App;

@@ -1,0 +1,43 @@
+.msg {
+  &__person {
+    &--self, &--other {
+      margin: 0.25rem 0;
+      color: white;
+      padding: 0 1.25rem;
+      border-radius: 1.5rem;
+      height: 3.7rem;
+      width: max-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+  
+    &--self {
+      background-color: $blue;
+      align-self: flex-end;
+    }
+  
+    &--other {
+      background-color: grey;
+      align-self: flex-start;
+    }
+
+    &--notification {
+      margin: 0.25rem 0;
+      color: $white;
+      padding: 0 0.75rem;
+      height: 2.7rem;
+      width: max-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      font-size: 2rem;
+    }
+  }
+
+  &__time {
+    height: min-content;
+  }
+}

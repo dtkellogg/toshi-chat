@@ -1,0 +1,169 @@
+//---------------------- animations ----------------------//
+
+@mixin fadeInAnimated($delay: 0s) {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  animation-delay: $delay;  // NOTE: animation-delay must come after animation, as animation uses a shorthand property and thus sets the delay back to 0s.
+}
+
+//---------------------- dimensions ----------------------//
+
+@mixin heightWidth100($height: 100%, $width: 100%) {
+	height: $height;
+	width: $width;
+}
+
+//---------------------- flexbox ----------------------//
+
+@mixin flexCenterCenter($align-items: center, $justify-content: center, $flex-direction: row) {
+	display: flex;
+	flex-direction: $flex-direction;
+	align-items: $align-items;
+	justify-content: $justify-content;
+}
+
+//---------------------- font-size ----------------------//
+
+@mixin font-size-1 {
+  font-size: 4.75rem;
+  font-weight: 100;
+  line-height: 7rem;
+
+  @media (max-width: 1050px) {
+    font-size: 4.5rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 4rem;
+  }
+  @media (max-width: 350px) {
+    font-size: 3.5rem;
+  }
+}
+
+@mixin font-size-2 {
+  font-size: 3.5rem;
+  font-weight: 100;
+  line-height: 4.5rem;
+
+  @media (max-width: 750px) {
+    font-size: 3.0rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 2.7rem;
+  }
+  @media (max-width: 350px) {
+    font-size: 2.5rem;
+  }
+}
+
+@mixin font-size-3 {
+  font-size: 3.0rem;
+  font-weight: 100;
+  line-height: 4.5rem;
+
+  @media (max-width: 750px) {
+    font-size: 2.8rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 2.5rem;
+  }
+  @media (max-width: 350px) {
+    font-size: 2.3rem;
+  }
+}
+
+@mixin font-size-4 {
+  font-size: 2.6rem;
+  font-weight: 300;
+  box-sizing: inherit;
+
+  @media (max-width: 750px) {
+    font-size: 2.0rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 1.7rem;
+  }
+  @media (max-width: 350px) {
+    font-size: 1.4rem;
+  }
+}
+
+@mixin font-size-5 {
+  font-size: 2.1rem;
+  font-weight: 300;
+  box-sizing: inherit;
+
+  @media (max-width: 750px) {
+    font-size: 2.0rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 1.7rem;
+  }
+  @media (max-width: 350px) {
+    font-size: 1.4rem;
+  }
+}
+
+@mixin font-size-6 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 2.6rem;
+
+  @media (max-width: 750px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 350px) {
+    font-size: 1.2rem;
+  }
+}
+
+@mixin font-size-7 {
+  font-size: 1.6rem;
+  font-weight: 300;
+
+  @media (max-width: 750px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 1.4rem;
+  }
+}
+
+@mixin font-size-8 {
+  font-size: 1.5rem;
+  font-weight: 300;
+
+  @media (max-width: 750px) {
+    font-size: 1.3rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 1.0;
+  }
+}
+
+@mixin font-size-9 {
+  font-size: 1.3rem;
+  font-weight: 300;
+
+  @media (max-width: 750px) {
+    font-size: 1.1rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 0.8;
+  }
+}
+
+@mixin font-size-10 {
+  font-size: 1.1rem;
+  font-weight: 300;
+
+  @media (max-width: 750px) {
+    font-size: 0.9rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 0.5;
+  }
+}
