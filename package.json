@@ -1,15 +1,15 @@
 {
-  "name": "toshi-chat",
+  "name": "toshi-chat server",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
-    "client": "set HTTPS=true --prefix frontend && npm start --prefix frontend",
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "set HTTPS=true --prefix client && npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "jest",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
