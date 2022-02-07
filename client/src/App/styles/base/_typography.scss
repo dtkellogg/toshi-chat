@@ -2,10 +2,13 @@
 
 .login {
   &__header {
-    @include fadeInAnimated($delay: 0s);
+    @include fadeInAnimated($delay: 0.1s);
     color: $color-quaternary;
-    font-size: 7rem;
-    margin-bottom: 3.5rem;
+    font-size: 2.5rem;
+    // margin-bottom: 3.5rem;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
   }
 }
 

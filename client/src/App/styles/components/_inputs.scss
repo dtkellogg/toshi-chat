@@ -9,13 +9,12 @@
     background-color: $color-secondary;
     color: $color-quaternary;
     @include fadeInAnimated($delay: .1s)
-
   }
   
   &__name {
     width: 35rem;
     margin: 0 auto;
-    // transform: translateY(10rem);
+    text-align: center;
   }
   
   &__msg {

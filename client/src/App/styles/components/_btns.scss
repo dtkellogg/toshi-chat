@@ -2,20 +2,19 @@
 
 .login {
   &__btn {
-    width: 20rem;
+    width: 35rem;
     display: block;
-    width: 200px;
-    height: 36px;
+    height: 4rem;
     border-radius: 18px;
     background-color: #1c89ff;
     border: solid 1px transparent;
     color: $color-quaternary;
-    font-size: 18px;
+    font-size: 2rem;
     font-weight: 300;
     cursor: pointer;
     margin: 2.5rem auto;
     transition: all 0.1s linear;
-    @include fadeInAnimated($delay: 0s);
+    @include fadeInAnimated($delay: 0.1s);
 
 
     &:hover {
@@ -32,7 +31,7 @@
 
 .chat {
   &__btn {
-    width: 3.25rem;
+    width: min-content;
     cursor: pointer;
     height: min-content;
     border: none;

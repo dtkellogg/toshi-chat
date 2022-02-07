@@ -39,6 +39,7 @@
     @include heightWidth100($height: 100vh, $width: 100vw);
     @include flexCenterCenter($flex-direction: column);
     background-color: $color-primary;
+    position: relative;
   }
 }
 
@@ -99,7 +100,7 @@
 
   &__input {
     &--container {
-      @include fadeInAnimated($delay: 0s);
+      @include fadeInAnimated($delay: 0.1s);
       @include flexCenterCenter();
       height: 3.75rem;
       width: 100%;

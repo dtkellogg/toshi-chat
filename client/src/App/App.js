@@ -28,7 +28,7 @@ function App() {
           <TransitionGroup>
             <CSSTransition timeout={250} classNames="fade" key={location.key}>
               <Routes location={location}>
-                <Route path="/" element={<Login socket={socket}/>} />
+                <Route exact path="/" element={<Login socket={socket}/>} />
                 <Route path="/register" element={<Register socket={socket}/>} />
                 <Route path="/chat" element={<Chat socket={socket}/>} />
                 <Route path="/upload" element={<Upload/>} />
