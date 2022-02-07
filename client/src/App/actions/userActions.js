@@ -7,7 +7,7 @@ import {
   USER_CREATE_SUCCESS,
   USER_CREATE_REQUEST,
 } from "../constants/userConstants";
-// import { logout } from './userActions'
+
 
 export const listUsers = () => async (dispatch) => {
   try {
@@ -15,8 +15,8 @@ export const listUsers = () => async (dispatch) => {
 
     const { data } = await axios.get("/api/users")
 
-    console.log('LIST USERS')
-    console.log(data)
+    // console.log('LIST USERS')
+    // console.log(data)
     
     dispatch({ 
       type: USER_LIST_SUCCESS,

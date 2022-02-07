@@ -9,6 +9,7 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
 
@@ -31,14 +32,14 @@ export default function Login() {
   }
 
   useEffect(()=>{
-    // emailRef.current.focus();
+    nameRef.current.focus();
   }, []);
 
   return (
     <div className="login__container">
       <h1 className="login__header">Toshi's Chat</h1>
       {/* <label className="input__label--name">Name: </label> */}
-        <input className="input__name" placeholder="Name" onChange={e => setName(e.target.value)} onKeyPress={(e) => handleKeyPress(e)} value={name} />
+        <input className="input__name" placeholder="Name" onChange={e => setName(e.target.value)} onKeyPress={(e) => handleKeyPress(e)} value={name} ref={nameRef} />
       <button className="login__btn" disabled={!name} onClick={(e) => handleSubmit(e)} aria-label="Login">Login</button>
     </div>
   )

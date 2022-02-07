@@ -9,12 +9,24 @@
     border-radius: 18px;
     background-color: #1c89ff;
     border: solid 1px transparent;
-    color: #fff;
+    color: $color-quaternary;
     font-size: 18px;
     font-weight: 300;
     cursor: pointer;
     margin: 2.5rem auto;
     // transform: translateY(10rem);
+    transition: all 0.2s linear;
+    @include fadeInAnimated($delay: 0s);
+
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(1.25px);
+    }
+
   }
 }
 

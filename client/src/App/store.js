@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 // reducers
 import { userListReducer, userCreateReducer } from './reducers/userReducers';
+import { socketsReducer } from './reducers/socketReducers';
 
 
 // const reducer = combineReducers({
@@ -49,13 +50,16 @@ import { userListReducer, userCreateReducer } from './reducers/userReducers';
 
 const reducer = combineReducers({
   userList: userListReducer,
-  userCreate: userListReducer
+  userCreate: userListReducer,
+  sockets: socketsReducer
 })
 
 const initialState = {
   userList: {
     users: []
-  }
+  },
+  sockets: {sockets: []},
+
 }
 
 const middleware = [thunk];

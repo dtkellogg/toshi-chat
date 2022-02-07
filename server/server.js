@@ -9,6 +9,10 @@ const colors = require("colors");
 const cors = require("cors")
 const { corsMiddleware } = require('./middleware/corsMiddleware')
 
+// Routes
+const socketRoutes = require('./routes/socketRoutes')
+
+
 dotenv.config();  // env variables
 
 const app = express();
@@ -46,6 +50,8 @@ app.get('/api/users', (req, res) => {
   res.send(users)
 })
 
+app.use('/api/sockets', socketRoutes)
+
 const PORT = process.env.PORT || 5000
 
 
@@ -58,7 +64,7 @@ io.on("connection", (socket) => {
   console.log(userMap);
 
   socket.on('chat', ({msg, name}) => {
-    io.sockets.emit('msg', msg, name, "purple")
+    io.sockets.emit('msg', msg, name)
   })
 
   socket.on('new-user', (name) => {
@@ -69,13 +75,13 @@ io.on("connection", (socket) => {
   })
 
   socket.on('user-left', () => {
-    socket.broadcast.emit('user-gone', `${userMap.get(socket.id)} has left the chat`, "red", true)
+    socket.broadcast.emit('user-gone', `${userMap.get(socket.id)} has left the chat`, true)
     userMap.delete(socket.id)
   })
 
   socket.on("disconnect", (name) => {
     console.log(`disconnect: ${socket.id}`);
-    userMap.get(socket.id) && socket.broadcast.emit('user-gone', `${userMap.get(socket.id)} has left the chat`, "red", true)
+    userMap.get(socket.id) && socket.broadcast.emit('user-gone', `${userMap.get(socket.id)} has left the chat`, true)
     userMap.delete(socket.id)
     console.log(userMap.size);
   });

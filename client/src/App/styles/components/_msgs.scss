@@ -39,5 +39,13 @@
 
   &__time {
     height: min-content;
+    margin-bottom: 1.1px;
   }
+
+  &__name {
+    margin-right: 0.5rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
 }

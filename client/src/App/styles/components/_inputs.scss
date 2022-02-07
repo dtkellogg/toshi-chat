@@ -6,6 +6,9 @@
     font-size: 2rem;
     border: none;
     height: 4rem;
+    background-color: $color-secondary;
+    color: $color-quaternary;
+    @include fadeInAnimated($delay: 0s)
   }
 
   &__name {

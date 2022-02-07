@@ -3,6 +3,7 @@ import { FaChevronLeft, FaUserCircle, FaCog } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { listUsers } from '../actions/userActions'
+import { v4 as uuid } from 'uuid';
 
 
 export default function Nav({ socket }) {
@@ -25,20 +26,16 @@ export default function Nav({ socket }) {
 
   return (
     <nav className="container__chat--nav">
-      <button className="btn__back" onClick={(e) => handleClick(e)} aria-label="Back button">
-        <FaChevronLeft className="icon__back" />
-      </button>
+        <FaChevronLeft className="icon__back btn__back" onClick={(e) => handleClick(e)} aria-label="Back button"/>
       {users && (
         <section className="container__nav--users">
           <section className="container__nav--user-icons">
-            {users.map(() => <FaUserCircle className="icon__circle" size={25} />)}
+            {users.map(() => <FaUserCircle className="icon__circle" size={25} key={uuid()} />)}
           </section>
           <span className="text__nav--num-users">{`${users.length} People`}</span>
         </section>
       )}
-      <button className="btn__settings" onClick={(e) => handleClick(e)} aria-label="Back button">
-        <FaCog className="icon__settings" size={25} />
-      </button>
+      <FaCog className="icon__settings btn__settings" onClick={(e) => handleClick(e)} aria-label="Back button" size={25} />
     </nav>
   )
 }

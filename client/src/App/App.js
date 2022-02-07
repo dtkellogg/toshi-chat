@@ -1,5 +1,8 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, Suspense } from 'react'
 import { ToastProvider } from "react-toast-notifications";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
+import Loading from './components/Loading'
 import Chat from './components/Chat';
 import Upload from './components/Upload';
 import Login from './components/Login';
@@ -21,12 +24,18 @@ function App() {
   return (
     <ToastProvider>
       <div className="container__main">
-        <Routes location={location}>
-          <Route path="/" element={<Login socket={socket}/>} />
-          <Route path="/register" element={<Register socket={socket}/>} />
-          <Route path="/chat" element={<Chat socket={socket}/>} />
-          <Route path="/upload" element={<Upload/>} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <TransitionGroup>
+            <CSSTransition timeout={250} classNames="fade" key={location.key}>
+              <Routes location={location}>
+                <Route path="/" element={<Login socket={socket}/>} />
+                <Route path="/register" element={<Register socket={socket}/>} />
+                <Route path="/chat" element={<Chat socket={socket}/>} />
+                <Route path="/upload" element={<Upload/>} />
+              </Routes>
+            </CSSTransition>
+            </TransitionGroup>
+        </Suspense>
       </div>
     </ToastProvider>
   );
