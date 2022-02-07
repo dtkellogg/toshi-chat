@@ -1,4 +1,4 @@
-//---------------------- animations ----------------------//
+//------------------------------- animations -------------------------------//
 
 @mixin fadeInAnimated($delay: 0s) {
   opacity: 0;
@@ -6,14 +6,14 @@
   animation-delay: $delay;  // NOTE: animation-delay must come after animation, as animation uses a shorthand property and thus sets the delay back to 0s.
 }
 
-//---------------------- dimensions ----------------------//
+//------------------------------- dimensions -------------------------------//
 
 @mixin heightWidth100($height: 100%, $width: 100%) {
 	height: $height;
 	width: $width;
 }
 
-//---------------------- flexbox ----------------------//
+//------------------------------- flexbox -------------------------------//
 
 @mixin flexCenterCenter($align-items: center, $justify-content: center, $flex-direction: row) {
 	display: flex;
@@ -22,7 +22,7 @@
 	justify-content: $justify-content;
 }
 
-//---------------------- font-size ----------------------//
+//------------------------------- font-size -------------------------------//
 
 @mixin font-size-1 {
   font-size: 4.75rem;

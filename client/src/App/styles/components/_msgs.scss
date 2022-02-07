@@ -4,7 +4,7 @@
       margin: 0.25rem 0;
       color: white;
       padding: 0 1.25rem;
-      border-radius: 1.5rem;
+      border-radius: 2.5rem;
       height: 3.7rem;
       width: max-content;
       display: flex;
@@ -34,6 +34,15 @@
       justify-content: center;
       align-self: center;
       font-size: 2rem;
+      text-align:center;
+
+      &:before, &:after {
+        display: inline-block;
+        content: "";
+        border-top: .01rem solid white;
+        width: 20vh;
+        margin: 0 2rem;
+      }
     }
   }
 
@@ -47,5 +56,4 @@
     font-weight: bold;
     font-size: 1.4rem;
   }
-
 }

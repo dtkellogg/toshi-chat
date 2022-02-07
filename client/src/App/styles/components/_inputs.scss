@@ -1,16 +1,17 @@
 .input {
 
   &__name, &__msg {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
     border-radius: 1rem;
     font-size: 2rem;
     border: none;
     height: 4rem;
     background-color: $color-secondary;
     color: $color-quaternary;
-    @include fadeInAnimated($delay: 0s)
-  }
+    @include fadeInAnimated($delay: .1s)
 
+  }
+  
   &__name {
     width: 35rem;
     margin: 0 auto;
@@ -18,8 +19,14 @@
   }
   
   &__msg {
-    width: 98%;
+    width: 100%;
+    margin: 2rem;
     justify-self: flex-start;
+    margin: 2rem 2rem 3rem 2rem;
+  }
+
+  &__name:focus, &__msg:focus {
+    outline: none;
   }
 
   &__label {

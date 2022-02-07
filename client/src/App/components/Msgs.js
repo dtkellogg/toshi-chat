@@ -13,19 +13,19 @@ export default function Msgs({ name: currentUser, socket }) {
     } else {
       socket.on('msg', (msg, name) => {
         if((msgs.length > 0) && (msgs[msgs.length - 1]["name"] === currentUser)) {
-            console.log("-------------SAME NAME-------------");
+            console.log("----------------------SAME NAME----------------------");
           }
-        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, name: name, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}]);
+        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, name: name, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).trim()}]);
       })
   
       socket.on('new-user', (msg, notification) => {
         // console.log("MSG");
         // console.log(msg);
-        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, notification: notification, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}]);
+        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, notification: notification, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).trim()}]);
       })
   
       socket.on('user-gone', (msg, notification) => {
-        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, notification: notification, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}]);
+        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, notification: notification, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).trim()}]);
       })
     }
   }, [socket])
@@ -35,7 +35,7 @@ export default function Msgs({ name: currentUser, socket }) {
     objDiv.scrollTop = objDiv.scrollHeight;
   }, [msgs])
 
-  // console.log("-------------MESSAGES-------------");
+  // console.log("----------------------MESSAGES----------------------");
   // console.log(msgs);
 
   return (
@@ -63,9 +63,9 @@ export default function Msgs({ name: currentUser, socket }) {
               >{msg}</span>
             </section>
           ) : (
-            <section className="msg__container--other" key={uuid()}>
+            <section className="msg__container--other" key={uuid()} style={showHeader ? {"marginTop": "1rem"} : {"marginTop": "0"}}>
               {showHeader && (
-              <div className="msg__container--header-other" style={showHeader ? {"marginTop": "1rem"} : {"marginTop": "0"}}>
+              <div className="msg__container--header-other" >
                 <span className="msg__name">{name} </span>
                 <span className="msg__time">{time}</span>
               </div>

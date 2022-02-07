@@ -1,82 +1,62 @@
-// ------------- main ------------- //
+// ---------------------- main ---------------------- //
 
 .container {
 
   &__main {
-    text-align: center;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include heightWidth100($height: 100vh, $width: 100vw);
+    @include flexCenterCenter();
     background: $color-primary;
-
-    // @media(max-width: 900px) {
-    //   padding: 5rem 0;
-    // }
+    text-align: center;
+    position: relative;
   }
 
   &__chat {
     &--nav {
+      @include fadeInAnimated($delay: .1s);
       background-color: $color-secondary;
       height: 7rem;
-      @include fadeInAnimated($delay: 0s)
     }
   }
 
   &__nav {
     &--users {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
+      @include flexCenterCenter($flex-direction: column);
+      @include heightWidth100();
       padding: 0.5rem 0;
     }
 
     &--user-icons {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flexCenterCenter();
+      @include heightWidth100();
     }
   }
 }
 
-// ------------- login ------------- //
+// ---------------------- login ---------------------- //
 
 .login {
   &__container {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @include heightWidth100($height: 100vh, $width: 100vw);
+    @include flexCenterCenter($flex-direction: column);
     background-color: $color-primary;
   }
 }
 
-// ------------- chat ------------- //
+// ---------------------- chat ---------------------- //
 
 .chat {
   &__container {
-    height: 100vh;
-    width: 100vw;
+    @include heightWidth100($height: 100vh, $width: 100vw);
+    background-color: $color-primary;
     display: flex;
     flex-direction: column;
     position: relative;
-    background-color: $color-primary;
   }
 }
 
 .msgs {
   &__container {
-    height: 100%;
-    width: 100%;
+    @include heightWidth100();
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -87,11 +67,7 @@
 .msg {
   &__container {
     &--self, &--other {
-      // margin: 0.25rem 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      @include flexCenterCenter($flex-direction: column);
     }
   
     &--self {
@@ -104,37 +80,35 @@
       margin-left: 0.5rem;
     }
 
-    &--header-self {
+    &--header-self, &--header-other {
       display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
+      align-items: baseline;
+      vertical-align: middle;
       width: 100%;
+    }
+    &--header-self {
+      justify-content: flex-end;
       margin-right: 8px;
     }
 
     &--header-other {
-      display: flex;
       justify-content: flex-start;
-      align-items: flex-end;
-      width: 100%;
       margin-left: 8px;
     }
   }
 
   &__input {
     &--container {
-      display: flex;
+      @include fadeInAnimated($delay: 0s);
+      @include flexCenterCenter();
       height: 3.75rem;
       width: 100%;
       overflow: scroll;
-      justify-content: center;
-      align-items: center;
       margin: 0 auto;
       border-radius: 1rem;
       height: 15rem;
       position: relative;
-      @include fadeInAnimated($delay: 0s)
-
+      height: min-content;
     }
   }
 }

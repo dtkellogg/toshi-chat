@@ -1,15 +1,15 @@
-// ------------- login ------------- //
+// ---------------------- login ---------------------- //
 
 .login {
   &__header {
+    @include fadeInAnimated($delay: 0s);
     color: $color-quaternary;
     font-size: 7rem;
-    margin-bottom: 4.5rem;
-    @include fadeInAnimated($delay: 0s);
+    margin-bottom: 3.5rem;
   }
 }
 
-// ------------- msgs ------------- //
+// ---------------------- msgs ---------------------- //
 
 // .msg {
 //   &__person {
@@ -17,10 +17,10 @@
 //   }
 // }
 
-// ------------- input ------------- //
+// ---------------------- input ---------------------- //
 
 
-/* ---------------------- external font family ---------------------- */
+/* ----------------------  external font family ----------------------  */
 
 @font-face {
   font-family: 'gorditaregular';

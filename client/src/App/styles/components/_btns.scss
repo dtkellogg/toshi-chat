@@ -1,4 +1,4 @@
-// ------------- login ------------- //
+// ---------------------- login ---------------------- //
 
 .login {
   &__btn {
@@ -14,8 +14,7 @@
     font-weight: 300;
     cursor: pointer;
     margin: 2.5rem auto;
-    // transform: translateY(10rem);
-    transition: all 0.2s linear;
+    transition: all 0.1s linear;
     @include fadeInAnimated($delay: 0s);
 
 
@@ -24,35 +23,35 @@
     }
 
     &:active {
-      transform: translateY(1.25px);
+      transform: translateY(.1px);
     }
-
   }
 }
 
-// ------------- chat ------------- //
+// ---------------------- chat ---------------------- //
 
 .chat {
   &__btn {
-    width: 3rem;
+    width: 3.25rem;
     cursor: pointer;
+    height: min-content;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     right: 1rem;
-    top: 18%;
     background-color: transparent;
-    right: 2rem;
-    top: 41%;
+    right: 3rem;
+    bottom: 2.75rem;
+    @include fadeInAnimated($delay: 0.1s);
   }
 }
 
 .icon {
   &__back, &__settings {
     height: 3rem;
-    fill: white;
+    fill: $color-quaternary;
   }
 }
 

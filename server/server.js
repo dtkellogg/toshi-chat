@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cors())  // CORS
 app.use(corsMiddleware);
 
-//---------------------- static build files for react side of app ----------------------//
+//------------------------------- static build files for react side of app -------------------------------//
 
 const modifiedPath = __dirname.split('/').slice(0, -1).join('/')
 

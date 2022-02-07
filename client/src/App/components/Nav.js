@@ -26,13 +26,13 @@ export default function Nav({ socket }) {
 
   return (
     <nav className="container__chat--nav">
-        <FaChevronLeft className="icon__back btn__back" onClick={(e) => handleClick(e)} aria-label="Back button"/>
+      <FaChevronLeft className="icon__back btn__back" onClick={(e) => handleClick(e)} aria-label="Back button" size={15} />
       {users && (
         <section className="container__nav--users">
           <section className="container__nav--user-icons">
-            {users.map(() => <FaUserCircle className="icon__circle" size={25} key={uuid()} />)}
+            {users.map(() => <FaUserCircle className="icon__circle" size={35} key={uuid()} />)}
           </section>
-          <span className="text__nav--num-users">{`${users.length} People`}</span>
+          <span className="text__nav--num-users">{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</span>
         </section>
       )}
       <FaCog className="icon__settings btn__settings" onClick={(e) => handleClick(e)} aria-label="Back button" size={25} />

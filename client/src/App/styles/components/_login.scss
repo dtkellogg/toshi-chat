@@ -18,7 +18,7 @@
   background-color: $color-quaternary;
 }
 
-/* ---------------------- form (inputs && labels) ---------------------- */
+/* ------------------------------- form (inputs && labels) ------------------------------- */
 
 .label__email, .label__password, .label__password--confirm {
   align-self: flex-start;
@@ -48,7 +48,7 @@
   background-color: $color-quaternary;
 }
 
-/* ---------------------- btns ---------------------- */
+/* ------------------------------- btns ------------------------------- */
 
 .btn__login {
   height: 4.0rem;
@@ -61,15 +61,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.5rem;
 }
 
-/* ---------------------- animations ---------------------- */
+/* ------------------------------- animations ------------------------------- */
 
 .contact__loader {
   transform: translateY(.2rem)
 }
 
-/* ---------------------- typography ---------------------- */
+/* ------------------------------- typography ------------------------------- */
 
 .header__login {
   font-size: 3rem;
@@ -99,8 +100,4 @@
   font-size: 1.25rem;
   align-self: start;
   cursor: pointer;
-}
-
-.btn__login {
-  font-size: 1.5rem;
 }
