@@ -44,6 +44,9 @@
     right: 3rem;
     bottom: 2.75rem;
     @include fadeInAnimated($delay: 0.1s);
+    background: white;
+    border-radius: 3rem;
+    border: 1px solid #1c89ff;
   }
 }
 
@@ -56,19 +59,17 @@
 
 .btn {
   &__back, &__settings {
-    position: absolute;
-    top: 1.25rem;
     border: none;
     background-color: transparent;
     cursor: pointer;
   }
 
   &__back {
-    left: 1.75rem;
+    margin-left: 2rem;
   }
 
   &__settings {
-    right: 1.75rem;
+    margin-right: 2rem;
   }
 }
 
