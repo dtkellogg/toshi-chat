@@ -26,6 +26,90 @@
   margin-top: 0.25rem;
 }
 
+//---------------------- modal ----------------------//
+
+.modal {
+  &__skills {
+    &--text {
+      @include font-size-3;
+      margin-left: 0.5rem;
+      color: $color-primary;
+      white-space: nowrap;
+
+      @media (max-width: 700px) {
+        margin-left: 0.45rem;
+      }
+
+      @media (max-width: 500px) {
+        margin-left: 0.4rem;
+      }
+    }
+  }
+
+  &__header {
+    @include font-size-2;
+    margin-bottom: 1rem;
+    align-self: center;
+    font-family: 'gorditaregular', serif;
+    color: $color-primary;
+
+    @media (max-width: 950px) {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 700px) {
+      font-size: 2.8rem;
+    }
+
+    @media (max-width: 560px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__subheader {
+    &--1, &--2 {
+      @include font-size-3;
+      align-self: flex-start;
+      line-height: 3rem;
+      color: $color-primary;
+    }
+  }
+
+  &__paragraph {
+    &--1, &--2 {
+      @include font-size-5;
+      align-self: flex-start;
+      line-height: 2.2rem;
+      color: $color-primary;
+
+      @media (max-width: 950px) {
+        line-height: 1.8rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    &--1 {
+      margin-left: 2rem;
+      margin-bottom: 1.0rem;
+
+      @media (max-width: 550px) {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  &__feature {
+    &--label {
+      margin-left: 2.0rem;
+      color: $color-primary;
+
+      @media (max-width: 550px) {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
 
 /* ----------------------  external font family ----------------------  */
 

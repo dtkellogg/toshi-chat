@@ -77,6 +77,78 @@
   &__input {
     &--btn {
       fill: $blue;
+      transform: scale(1.04);
+    }
+  }
+}
+
+//---------------------- modal ----------------------//
+
+.modal {
+  &__btn {
+    &--close {
+      // @extend %btn;
+      @include flexCenterCenter();
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      height: 4.25rem;
+      width: 4.25rem;
+      line-height: 3.5rem;
+      font-size: 2.75rem;
+      border-radius: 50%;
+      border: none;
+      transition: 0.15s;
+      cursor: pointer;
+      background: none;
+
+      @media (max-width: 550px) {
+        height: 3.0rem;
+        width: 3.0rem;
+        line-height: 3.25rem;
+        font-size: 2.0rem;
+        top: 1.25rem;
+        right: 1.25rem;
+      }
+
+      &:hover {
+        // background-color: $blue-4;
+        // color: $grey-11;
+        transition: 0.15s;
+      }
+    }
+
+    &--github, &--url {
+      // @extend %btn;
+      @include font-size-3;
+      width: 22rem;
+      height: 4rem;
+      border: 1px solid transparent;
+      border-radius:  2rem;
+      // color: $grey-12;
+
+      @media (max-width: 600px) {
+        width: 15rem;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        // color: $grey-11;
+        // border: 1px solid $black;
+        // background-color: $grey-5;
+        transition: 0.15s;
+      }
+    }
+
+    &--github {
+      // background-color: $blue-3;
+    }
+
+    &--url {
+      // background-color: $blue-4;
     }
   }
 }

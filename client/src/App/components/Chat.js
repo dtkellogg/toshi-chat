@@ -6,6 +6,8 @@ import { listUsers } from '../actions/userActions'
 import NewMsg from './NewMsg'
 import Msgs from './Msgs'
 import Nav from './Nav'
+import Modal from './Modal'
+
 
 
 export default function Chat({ socket }) {
@@ -20,14 +22,14 @@ export default function Chat({ socket }) {
   const userList = useSelector((state) => state.userList)
   const { loading, error, users } = userList
 
+  const modalIsOpen = useSelector((state) => state.modalIsOpen);
+  const { isOpen } = modalIsOpen;
+
   useEffect(() => {
-    // localStorage.clear();
     if(!name || socket === undefined) {
       navigate('/')
     } else {
       socket.emit('new-user', name)
-      // console.log('-----socket--------');
-      // console.log(socket);
       dispatch(addToSockets(socket.id, name))
     }
     dispatch(listUsers())
@@ -44,6 +46,7 @@ export default function Chat({ socket }) {
       <Nav socket={socket} users={users} />
       <Msgs name={name} socket={socket} />
       <NewMsg socket={socket} name={name} msgRef={msgRef} />
+      { isOpen && <Modal /> }
     </div>
   )
 }

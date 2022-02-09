@@ -10,6 +10,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 // reducers
 import { userListReducer, userCreateReducer } from './reducers/userReducers';
 import { socketsReducer } from './reducers/socketReducers';
+import { modalSetProjectReducer, modalIsOpenReducer } from "./reducers/modalReducer";
+
 
 
 // const reducer = combineReducers({
@@ -51,7 +53,9 @@ import { socketsReducer } from './reducers/socketReducers';
 const reducer = combineReducers({
   userList: userListReducer,
   userCreate: userListReducer,
-  sockets: socketsReducer
+  sockets: socketsReducer,
+  modalSetProject: modalSetProjectReducer,
+  modalIsOpen: modalIsOpenReducer
 })
 
 const initialState = {

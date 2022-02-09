@@ -128,3 +128,50 @@
     margin-top: 1.5rem;
   }
 }
+
+//---------------------- modal ----------------------//
+
+.modal {
+	&__container {
+		@include flexCenterCenter($flex-direction: column, $justify-content: flex-start, $align-items: flex-start);
+    @include heightWidth100();
+    transform: translate(50%, 5rem);
+    height: 80vh;
+    width: 50vw;
+    background-color: $color-quaternary;
+    border-radius: 3rem;
+		opacity: 1;
+		transition: opacity 3s;
+    position: relative;
+    overflow: hidden;
+    padding: 3rem 3rem 8rem 3rem;
+		
+		@media (max-width: 950px) {
+			transform: translate(0, 4rem);
+			width: 65vw;
+      margin: auto;
+			min-height: min-content;
+      margin-bottom: 5rem;
+		}
+
+		@media (max-width: 800px) {
+      width: 75vw;
+      height: 85%;
+		}
+		@media (max-width: 550px) {
+			transform: translate(0, 3rem);
+      width: 85vw;
+		}
+
+		&.hide {
+			opacity: 0;
+		}
+	
+		&--skills {
+      @include flexCenterCenter($justify-content: space-around);
+			width: 100%;
+			margin-top: 1rem;
+			flex-wrap: wrap;
+		}
+	}
+}

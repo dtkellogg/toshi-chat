@@ -3,14 +3,14 @@
     &--self, &--other {
       margin: 0.25rem 0;
       color: white;
-      padding: 0 1.25rem;
+      padding: 0.5rem 1.25rem;
       border-radius: 2.5rem;
-      height: 3.7rem;
-      width: max-content;
+      min-height: 3.7rem;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.8rem;
+      flex-wrap: wrap;
     }
   
     &--self {
@@ -24,7 +24,7 @@
     }
 
     &--notification {
-      margin: 0.25rem 0;
+      margin: 0.25rem;
       color: $white;
       padding: 0 0.75rem;
       height: 2.7rem;

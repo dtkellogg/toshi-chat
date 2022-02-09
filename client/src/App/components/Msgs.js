@@ -73,7 +73,7 @@ export default function Msgs({ name: currentUser, socket }) {
               <span className="msg__person--self">{msg}</span>
             </section>
           ) : (
-            <section className="msg__container--other" key={uuid()} style={showHeader ? {"marginTop": "1rem"} : {"marginTop": "0"}}>
+            <section className="msg__container--other" key={uuid()} style={showHeader && (msgs[i-1].name !== currentUser) && (msgs[i-1].type !== 'notification') ? {"marginTop": "1rem"} : {"marginTop": "0"}}>
               {showHeader && (
               <div className="msg__container--header-other" >
                 <span className="msg__name">{name} </span>
