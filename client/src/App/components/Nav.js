@@ -17,7 +17,7 @@ export default function Nav({ socket, users }) {
   console.log("LIST USERS")
   console.log(users)
 
-  if(users){
+  if(users.length > 0) {
     return (
       <nav className="container__chat--nav">
         <FaChevronLeft className="icon__back btn__back" onClick={(e) => handleClick(e)} aria-label="Back button" size={15} />
