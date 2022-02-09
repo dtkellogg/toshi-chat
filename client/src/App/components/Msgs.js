@@ -1,32 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { listUsers } from '../actions/userActions'
 import { v4 as uuid } from 'uuid'
 
 
 export default function Msgs({ name: currentUser, socket }) {
   const [msgs, setMsgs] = useState([])
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if(socket === undefined) {
       navigate('/')
     } else {
-      socket.on('msg', (msg, name) => {
-        if((msgs.length > 0) && (msgs[msgs.length - 1]["name"] === currentUser)) {
-            console.log("----------------------SAME NAME----------------------");
+      socket.on('msg', (type, msg, name) => {
+        if(type === 'new-msg') {
+          setMsgs((oldMsgs) => [...oldMsgs, {
+            type: type,
+            msg: msg,
+            name: name,
+            time: new Date().toLocaleTimeString([], {
+              hour: '2-digit',
+              minute:'2-digit'
+            }).trim()
+          }])
+        } else if (type === 'notification') {
+          setMsgs((oldMsgs) => [...oldMsgs, {
+            type: type,
+            msg: msg,
+            name: null,
+            time: new Date().toLocaleTimeString([], {
+              hour: '2-digit',
+              minute:'2-digit'
+            }).trim()
+          }])
+          dispatch(listUsers())
           }
-        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, name: name, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).trim()}]);
-      })
-  
-      socket.on('new-user', (msg, notification) => {
-        // console.log("MSG");
-        // console.log(msg);
-        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, notification: notification, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).trim()}]);
-      })
-  
-      socket.on('user-gone', (msg, notification) => {
-        setMsgs((oldMsgs) => [...oldMsgs, {msg: msg, notification: notification, time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).trim()}]);
-      })
+        } 
+      )
     }
   }, [socket])
 
@@ -41,12 +53,12 @@ export default function Msgs({ name: currentUser, socket }) {
   return (
     <div className="msgs__container" id="msg-container">
       {msgs.map((m, i) => {
-        const { name, msg, time, notification } = m
+        const { type,  msg, name, time } = m
         const showHeader = ( i === 0 || msgs[i-1].name !== name )
         const sameUser = (name === currentUser)
 
         return (
-          (notification) ? (
+          (type === 'notification') ? (
             <div className="msg__person--notification" key={uuid()}>
               <span className="">{msg} ({time})</span>
             </div>
@@ -58,9 +70,7 @@ export default function Msgs({ name: currentUser, socket }) {
                   <span className="msg__time">{time}</span>
                 </div>
               )}
-              <span className="msg__person--self" 
-              // style={sameUser ? {"margin": 0} : {"margin": "0.25rem 0"}}
-              >{msg}</span>
+              <span className="msg__person--self">{msg}</span>
             </section>
           ) : (
             <section className="msg__container--other" key={uuid()} style={showHeader ? {"marginTop": "1rem"} : {"marginTop": "0"}}>

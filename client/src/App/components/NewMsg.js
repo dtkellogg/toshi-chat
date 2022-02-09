@@ -12,7 +12,7 @@ export default function NewMsg({ socket, name, msgRef }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    socket.emit('chat', {msg, name})
+    socket.emit('chat', msg, name)
     setMsg("")
   }
 

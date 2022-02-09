@@ -1,17 +1,12 @@
 import React, { useEffect } from 'react'
 import { FaChevronLeft, FaUserCircle, FaCog } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { listUsers } from '../actions/userActions'
 import { v4 as uuid } from 'uuid';
 
 
-export default function Nav({ socket }) {
-  const userList = useSelector((state) => state.userList)
-  const { loading, error, users } = userList
-
+export default function Nav({ socket, users }) {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  let numUsers = users.length
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -19,10 +14,8 @@ export default function Nav({ socket }) {
     navigate('/');
   }
 
-  useEffect(() => {
-    dispatch(listUsers())
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
+  console.log("LIST USERS")
+  console.log(users)
 
   return (
     <nav className="container__chat--nav">
@@ -32,7 +25,7 @@ export default function Nav({ socket }) {
           <section className="container__nav--user-icons">
             {users.map(() => <FaUserCircle className="icon__circle" size={35} key={uuid()} />)}
           </section>
-          <span className="text__nav--num-users">{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</span>
+          <span className="text__nav--num-users">{`${numUsers} ${numUsers === 1 ? 'Person' : 'People'}`}</span>
         </section>
       )}
       <FaCog className="icon__settings btn__settings" onClick={(e) => handleClick(e)} aria-label="Back button" size={25} />

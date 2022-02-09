@@ -63,25 +63,26 @@ io.on("connection", (socket) => {
   console.log(`${io.engine.clientsCount} connections`);
   console.log(userMap);
 
-  socket.on('chat', ({msg, name}) => {
-    io.sockets.emit('msg', msg, name)
+  socket.on('chat', (msg, name) => {
+    io.sockets.emit('msg', 'new-msg', msg, name)
   })
 
   socket.on('new-user', (name) => {
     userMap.set(socket.id, name)
-    console.log(userMap);
-    console.log(userMap.size);
-    socket.broadcast.emit('new-user', `${name} has entered the chat`, "green", true)
+    socket.broadcast.emit('msg', 'notification', `${name} has entered the chat`, null)
   })
 
   socket.on('user-left', () => {
-    socket.broadcast.emit('user-gone', `${userMap.get(socket.id)} has left the chat`, true)
+    const user = userMap.get(socket.id)
+    const userIdx = users.indexOf(user)
     userMap.delete(socket.id)
+    users.splice(userIdx, 1)
+    socket.broadcast.emit('msg', 'notification', `${user} has left the chat`, null)
   })
 
   socket.on("disconnect", (name) => {
     console.log(`disconnect: ${socket.id}`);
-    userMap.get(socket.id) && socket.broadcast.emit('user-gone', `${userMap.get(socket.id)} has left the chat`, true)
+    userMap.get(socket.id) && socket.broadcast.emit('msg', 'notification', `${userMap.get(socket.id)} has left the chat`, null)
     userMap.delete(socket.id)
     console.log(userMap.size);
   });
