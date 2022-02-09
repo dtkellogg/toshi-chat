@@ -17,18 +17,20 @@ export default function Nav({ socket, users }) {
   console.log("LIST USERS")
   console.log(users)
 
-  return (
-    <nav className="container__chat--nav">
-      <FaChevronLeft className="icon__back btn__back" onClick={(e) => handleClick(e)} aria-label="Back button" size={15} />
-      {users && (
-        <section className="container__nav--users">
-          <section className="container__nav--user-icons">
-            {users.map(() => <FaUserCircle className="icon__circle" size={35} key={uuid()} />)}
+  if(users){
+    return (
+      <nav className="container__chat--nav">
+        <FaChevronLeft className="icon__back btn__back" onClick={(e) => handleClick(e)} aria-label="Back button" size={15} />
+        {users && (
+          <section className="container__nav--users">
+            <section className="container__nav--user-icons">
+              {users.map(() => <FaUserCircle className="icon__circle" size={35} key={uuid()} />)}
+            </section>
+            <span className="text__nav--num-users">{`${numUsers} ${numUsers === 1 ? 'Person' : 'People'}`}</span>
           </section>
-          <span className="text__nav--num-users">{`${numUsers} ${numUsers === 1 ? 'Person' : 'People'}`}</span>
-        </section>
-      )}
-      <FaCog className="icon__settings btn__settings" onClick={(e) => handleClick(e)} aria-label="Back button" size={25} />
-    </nav>
-  )
+        )}
+        <FaCog className="icon__settings btn__settings" onClick={(e) => handleClick(e)} aria-label="Back button" size={25} />
+      </nav>
+    )
+  } else return null
 }
