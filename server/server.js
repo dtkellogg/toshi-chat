@@ -20,22 +20,6 @@ app.use(express.json());
 app.use(cors())  // CORS
 app.use(corsMiddleware);
 
-//------------------------------- static build files for react side of app -------------------------------//
-
-const modifiedPath = __dirname.split('/').slice(0, -1).join('/')
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(modifiedPath, "/client/build")));
-
-  app.get("/", (req, res) =>
-    res.sendFile(path.resolve(modifiedPath, "client", "build", "index.html"))
-  );
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running....");
-  });
-}
-
 const userMap = new Map()
 const users = []
 
@@ -51,6 +35,22 @@ app.get('/api/users', (req, res) => {
 })
 
 app.use('/api/sockets', socketRoutes)
+
+//------------------------------- static build files for react side of app -------------------------------//
+
+const modifiedPath = __dirname.split('/').slice(0, -1).join('/')
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(modifiedPath, "/client/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(modifiedPath, "client", "build", "index.html"))
+  );
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running....");
+  });
+}
 
 const PORT = process.env.PORT || 5000
 
