@@ -15,8 +15,8 @@ export const listUsers = () => async (dispatch) => {
 
     const { data } = await axios.get("/api/users")
 
-    // console.log('LIST USERS')
-    // console.log(data)
+    console.log('LIST USERS')
+    console.log(data)
     
     dispatch({ 
       type: USER_LIST_SUCCESS,
