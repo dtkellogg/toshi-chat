@@ -27,7 +27,7 @@ const modifiedPath = __dirname.split('/').slice(0, -1).join('/')
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(modifiedPath, "/client/build")));
 
-  app.get("*", (req, res) =>
+  app.get("/", (req, res) =>
     res.sendFile(path.resolve(modifiedPath, "client", "build", "index.html"))
   );
 } else {
