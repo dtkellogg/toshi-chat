@@ -47,7 +47,7 @@ app.get('/api/users', (req, res) => {
   }
   console.log("SERVER USERS".red);
   console.log(users);
-  res.send(users)
+  res.json(users)
 })
 
 app.use('/api/sockets', socketRoutes)
