@@ -16,7 +16,7 @@ function Nav({ socket }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  let numUsers = users.length
+  let numUsers
 
   const handleBackClick = (e) => {
     e.preventDefault();
@@ -28,6 +28,10 @@ function Nav({ socket }) {
     e.preventDefault();
     dispatch(modalToggleOpen(true))
   }
+
+  useEffect(() => {
+    numUsers = users.length
+  }, [users])
 
 
   console.log("LIST USERS")
@@ -44,7 +48,11 @@ function Nav({ socket }) {
               <FaUserCircle className="icon__circle" size={35} key={uuid()} />
               {/* // )} */}
             </section>
-            <span className="text__nav--num-users">{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</span>
+            {/* <span className="text__nav--num-users">{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</span> */}
+            <details>
+              <summary>{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</summary>
+              <p>{[...users].join(", ")}</p>
+            </details>
           </section>
         {/* )} */}
         <FaCog className="icon__settings" onClick={(e) => handleSettingsClick(e)} aria-label="Back button" size={50} />

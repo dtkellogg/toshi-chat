@@ -11,7 +11,7 @@
     @include fadeInAnimated($delay: .1s);
 
     &::placeholder {
-      color: var(--color-quintinary);
+      color: var(--color-quinary);
     }
   }
   

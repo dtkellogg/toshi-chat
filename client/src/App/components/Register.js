@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { useToasts } from 'react-toast-notifications'
 import Loader from "react-loader-spinner";
 
 
@@ -13,8 +12,6 @@ export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-
-  const { addToast } = useToasts()
 
 
   const navigate = useNavigate()

@@ -3,8 +3,9 @@
 .container {
 
   &__main {
-    @include heightWidth100($height: 100vh, $width: 100vw);
     @include flexCenterCenter();
+    width: 100%;
+    min-height: 100vh;
     background: var(--color-primary);
     text-align: center;
     position: relative;

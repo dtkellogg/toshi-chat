@@ -12,6 +12,7 @@ import Modal from './Modal'
 
 export default function Chat({ socket }) {
   const { state: name } = useLocation()
+  const userName = name
   const msgRef = useRef()
   const navigate = useNavigate()
   const dispatch = useDispatch()

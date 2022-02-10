@@ -37,7 +37,9 @@ export default function Modal() {
     root?.style.setProperty("--color-secondary", darkMode ? "#282828" : "#989898");
     root?.style.setProperty("--color-tertiary", darkMode ? "#989898" : "#282828");
     root?.style.setProperty("--color-quaternary", darkMode ? "#F0F0F0" : "#080808");
-    root?.style.setProperty("--color-quintinary", darkMode ? "#989898ad" : "#080808");
+    root?.style.setProperty("--color-quinary", darkMode ? "#989898ad" : "#080808");
+    root?.style.setProperty("--color-senary", darkMode ? "#787878" : "rgb(211, 210, 210)");
+    root?.style.setProperty("--blue", darkMode ? "#1c89ff" : "#99d6ff");
   }, [darkMode]);
 
   

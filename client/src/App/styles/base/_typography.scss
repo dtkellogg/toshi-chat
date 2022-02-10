@@ -8,6 +8,14 @@
     top: 2rem;
     left: 2rem;
   }
+
+  &__text {
+    &--fail {
+      font-size: 1.5rem;
+      color: var(--red-1);
+      transform: translateY(-2rem);
+    }
+  }
 }
 
 // ---------------------- msgs ---------------------- //

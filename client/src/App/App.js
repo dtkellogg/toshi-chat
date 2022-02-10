@@ -1,5 +1,4 @@
 import React, { useEffect, Suspense } from 'react'
-import { ToastProvider } from "react-toast-notifications";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import Loading from './components/Loading'
@@ -22,22 +21,20 @@ function App() {
 
 
   return (
-    <ToastProvider>
-      <div className="container__main">
-        <Suspense fallback={<Loading />}>
-          <TransitionGroup>
-            <CSSTransition timeout={250} classNames="fade" key={location.key}>
-              <Routes location={location}>
-                <Route exact path="/" element={<Login socket={socket}/>} />
-                <Route path="/register" element={<Register socket={socket}/>} />
-                <Route path="/chat" element={<Chat socket={socket}/>} />
-                <Route path="/upload" element={<Upload/>} />
-              </Routes>
-            </CSSTransition>
-            </TransitionGroup>
-        </Suspense>
-      </div>
-    </ToastProvider>
+    <div className="container__main">
+      <Suspense fallback={<Loading />}>
+        <TransitionGroup>
+          <CSSTransition timeout={250} classNames="fade" key={location.key}>
+            <Routes location={location}>
+              <Route exact path="/" element={<Login socket={socket}/>} />
+              <Route path="/register" element={<Register socket={socket}/>} />
+              <Route path="/chat" element={<Chat socket={socket}/>} />
+              <Route path="/upload" element={<Upload/>} />
+            </Routes>
+          </CSSTransition>
+          </TransitionGroup>
+      </Suspense>
+    </div>
   );
 }
 
