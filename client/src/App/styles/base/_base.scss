@@ -20,7 +20,7 @@ html {
 
 body {
   box-sizing: border-box;
-  color: $white;
+  color: var(--color-quaternary)
 }
 
 a {

@@ -17,7 +17,6 @@ export default function Chat({ socket }) {
   const dispatch = useDispatch()
 
   const { sockets } = useSelector((state) => state.sockets);
-  // const {paymentMethod} = sockets;
 
   const userList = useSelector((state) => state.userList)
   const { loading, error, users } = userList

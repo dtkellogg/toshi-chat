@@ -5,7 +5,7 @@
   &__main {
     @include heightWidth100($height: 100vh, $width: 100vw);
     @include flexCenterCenter();
-    background: $color-primary;
+    background: var(--color-primary);
     text-align: center;
     position: relative;
   }
@@ -13,7 +13,7 @@
   &__chat {
     &--nav {
       @include fadeInAnimated($delay: .1s);
-      background-color: $color-secondary;
+      background-color: var(--color-secondary);
       height: 7rem;
       display: flex;
       align-items: center;
@@ -41,7 +41,7 @@
   &__container {
     @include heightWidth100($height: 100vh, $width: 100vw);
     @include flexCenterCenter($flex-direction: column);
-    background-color: $color-primary;
+    background-color: var(--color-primary);
     position: relative;
   }
 }
@@ -51,7 +51,7 @@
 .chat {
   &__container {
     @include heightWidth100($height: 100vh, $width: 100vw);
-    background-color: $color-primary;
+    background-color: var(--color-primary);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -135,43 +135,29 @@
 	&__container {
 		@include flexCenterCenter($flex-direction: column, $justify-content: flex-start, $align-items: flex-start);
     @include heightWidth100();
-    transform: translate(50%, 5rem);
-    height: 80vh;
-    width: 50vw;
-    background-color: $color-quaternary;
+    height: min-content;
+    width: max-content;
+    background-color: (var(--color-quaternary));
     border-radius: 3rem;
 		opacity: 1;
 		transition: opacity 3s;
     position: relative;
     overflow: hidden;
-    padding: 3rem 3rem 8rem 3rem;
-		
-		@media (max-width: 950px) {
-			transform: translate(0, 4rem);
-			width: 65vw;
-      margin: auto;
-			min-height: min-content;
-      margin-bottom: 5rem;
-		}
-
-		@media (max-width: 800px) {
-      width: 75vw;
-      height: 85%;
-		}
-		@media (max-width: 550px) {
-			transform: translate(0, 3rem);
-      width: 85vw;
-		}
-
+    padding: 3rem;
+    
 		&.hide {
 			opacity: 0;
 		}
 	
-		&--skills {
-      @include flexCenterCenter($justify-content: space-around);
+		&--options {
+      display: grid;
+      gap: 4rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
 			width: 100%;
-			margin-top: 1rem;
-			flex-wrap: wrap;
+      justify-items: center;
+      align-items: center;
+
 		}
 	}
 }

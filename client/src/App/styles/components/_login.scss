@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: $color-quaternary;
+  background-color: --color-quaternary;
   border-radius: 2rem;
 }
 
@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: center;
   width: 40rem;
-  background-color: $color-quaternary;
+  background-color: --color-quaternary;
 }
 
 /* ------------------------------- form (inputs && labels) ------------------------------- */
@@ -23,7 +23,7 @@
 .label__email, .label__password, .label__password--confirm {
   align-self: flex-start;
   margin-left: 0.5rem;
-  color: $black;
+  color: --black;
 }
 
 .input__email, .input__password, .input__password--confirm {
@@ -45,7 +45,7 @@
 .input__email:focus, .input__password:focus {
   outline: none;
   border-bottom: 1px solid #0099ff;
-  background-color: $color-quaternary;
+  background-color: --color-quaternary;
 }
 
 /* ------------------------------- btns ------------------------------- */
@@ -54,7 +54,7 @@
   height: 4.0rem;
   width: 40rem;
   border-radius: 4rem;
-  color: $white;
+  color: --white;
   background-color: #0099ff;
   border: none;
   cursor: pointer;
@@ -74,7 +74,7 @@
 
 .header__login {
   font-size: 3rem;
-  color: $black;
+  color: --black;
 }
 
 .label__email, .label__password, .label__password--confirm {
@@ -87,7 +87,7 @@
 
 .to-register {
   font-size: 1.25rem;
-  color: $black;
+  color: --black;
 }
 
 .link__register {

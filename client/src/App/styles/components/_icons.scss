@@ -1,0 +1,74 @@
+// .btn {
+//   &__back, &__settings {
+//     border: none;
+//     background-color: transparent;
+//     cursor: pointer;
+//   }
+
+//   &__back {
+//     margin-left: 2rem;
+//   }
+
+//   &__settings {
+//     margin-right: 2rem;
+
+//     -webkit-animation:spin 6s linear infinite;
+//     -moz-animation:spin 6s linear infinite;
+//     animation:spin 6s linear infinite;
+   
+//   }
+//   // &__settings:hover {
+//   // transform: rotate(360deg);
+//   // -webkit-transform: rotate(360deg);
+//   // }
+// }
+
+@-moz-keyframes spin { 
+  100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+  100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+  100% { 
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg); 
+  } 
+}
+
+.icon {
+  &__back, &__settings, &__circle {
+    fill: var(--color-quaternary);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__back, &__settings {
+    height: 3rem;
+  }
+
+  &__back {
+    margin-left: 2rem;
+  }
+
+  &__settings {
+    margin-right: 2rem;
+    -webkit-animation: spin 6s linear infinite;
+    -moz-animation: spin 6s linear infinite;
+    animation: spin 6s linear infinite;
+    // animation: none;
+  }
+
+  &__sun {
+    fill: var(--yellow-1);
+    border: none;
+    cursor: pointer;
+  }
+
+  &__moon {
+    fill: var(--yellow-1);
+    border: none;
+    cursor: pointer;
+  }
+}

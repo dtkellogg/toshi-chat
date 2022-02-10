@@ -3,9 +3,7 @@
 .login {
   &__header {
     @include fadeInAnimated($delay: 0.1s);
-    color: $color-quaternary;
     font-size: 2.5rem;
-    // margin-bottom: 3.5rem;
     position: absolute;
     top: 2rem;
     left: 2rem;
@@ -33,7 +31,7 @@
     &--text {
       @include font-size-3;
       margin-left: 0.5rem;
-      color: $color-primary;
+      color: var(--color-primary);
       white-space: nowrap;
 
       @media (max-width: 700px) {
@@ -48,10 +46,10 @@
 
   &__header {
     @include font-size-2;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     align-self: center;
     font-family: 'gorditaregular', serif;
-    color: $color-primary;
+    color: var(--color-primary);
 
     @media (max-width: 950px) {
       margin-bottom: 0;
@@ -66,50 +64,13 @@
     }
   }
 
-  &__subheader {
-    &--1, &--2 {
-      @include font-size-3;
-      align-self: flex-start;
-      line-height: 3rem;
-      color: $color-primary;
-    }
-  }
-
-  &__paragraph {
-    &--1, &--2 {
-      @include font-size-5;
-      align-self: flex-start;
-      line-height: 2.2rem;
-      color: $color-primary;
-
-      @media (max-width: 950px) {
-        line-height: 1.8rem;
-        margin-bottom: 1rem;
-      }
-    }
-
-    &--1 {
-      margin-left: 2rem;
-      margin-bottom: 1.0rem;
-
-      @media (max-width: 550px) {
-        margin-left: 1rem;
-      }
-    }
-  }
-
-  &__feature {
-    &--label {
-      margin-left: 2.0rem;
-      color: $color-primary;
-
-      @media (max-width: 550px) {
-        margin-left: 1rem;
-      }
+  &__option {
+    &--1, &--2, &--3, &--4 {
+      font-size: 2rem;
+      color: var(--color-primary);
     }
   }
 }
-
 
 /* ----------------------  external font family ----------------------  */
 

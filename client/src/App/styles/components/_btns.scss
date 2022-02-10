@@ -8,7 +8,7 @@
     border-radius: 18px;
     background-color: #1c89ff;
     border: solid 1px transparent;
-    color: $color-quaternary;
+    color: var(--color-quaternary);
     font-size: 2rem;
     font-weight: 300;
     cursor: pointer;
@@ -44,39 +44,16 @@
     right: 3rem;
     bottom: 2.75rem;
     @include fadeInAnimated($delay: 0.1s);
-    background: white;
+    background: var(--color-quaternary);
     border-radius: 3rem;
     border: 1px solid #1c89ff;
-  }
-}
-
-.icon {
-  &__back, &__settings {
-    height: 3rem;
-    fill: $color-quaternary;
-  }
-}
-
-.btn {
-  &__back, &__settings {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-  &__back {
-    margin-left: 2rem;
-  }
-
-  &__settings {
-    margin-right: 2rem;
   }
 }
 
 .msg {
   &__input {
     &--btn {
-      fill: $blue;
+      fill: var(--blue);
       transform: scale(1.06);
     }
   }
@@ -92,63 +69,27 @@
       position: absolute;
       top: 1.5rem;
       right: 1.5rem;
-      height: 4.25rem;
-      width: 4.25rem;
+      height: 3rem;
+      width: 3rem;
       line-height: 3.5rem;
-      font-size: 2.75rem;
+      font-size: 2rem;
       border-radius: 50%;
-      border: none;
       transition: 0.15s;
       cursor: pointer;
       background: none;
-
-      @media (max-width: 550px) {
-        height: 3.0rem;
-        width: 3.0rem;
-        line-height: 3.25rem;
-        font-size: 2.0rem;
-        top: 1.25rem;
-        right: 1.25rem;
-      }
+      color: var(--color-primary);
+      background: var(--red-1);
+      border: 1px solid var(--red-2);
 
       &:hover {
-        // background-color: $blue-4;
-        // color: $grey-11;
         transition: 0.15s;
       }
     }
 
-    &--github, &--url {
-      // @extend %btn;
-      @include font-size-3;
-      width: 22rem;
-      height: 4rem;
-      border: 1px solid transparent;
-      border-radius:  2rem;
-      // color: $grey-12;
-
-      @media (max-width: 600px) {
-        width: 15rem;
-      }
-
-      &:focus {
-        outline: none;
-      }
-
-      &:hover {
-        // color: $grey-11;
-        // border: 1px solid $black;
-        // background-color: $grey-5;
-        transition: 0.15s;
-      }
-    }
-
-    &--github {
-      // background-color: $blue-3;
-    }
-
-    &--url {
-      // background-color: $blue-4;
+    &--theme {
+      background: none;
+      border: none;
+      transform: translateY(3px);
     }
   }
 }

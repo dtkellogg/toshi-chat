@@ -5,46 +5,27 @@
 	background-color: rgba(0, 0, 0, 0.685);
 	z-index: 99999999999;
 	transition: all 2s;
-
-	&__video {
-		width: 45rem;
-		height: 0;
-		overflow: hidden;
-		@include flexCenterCenter();
-	}
+    display: flex;
+  align-items: center;
+  justify-content: center;
 
 	&__skills {
 		&--item {
       @include flexCenterCenter();
       margin: 0 0.5rem;
 		}
-
-		&--icon {
-		}
 	}
 
-	&__github {
-		width: 100%;
-		position: absolute;
-		bottom: 6rem;
-		border-radius: 0;
-	}
+  &__input {
+    &--1, &--2 {
+    }
 
-	&__url {
-		width: 100%;
-		position: absolute;
-		bottom: 0rem;
-		border-radius: 0 0 3rem 3rem;
-	}
+    &--1 {
 
-  &__feature {
-    list-style-type: disc;
-    list-style-position: outside;
-    display: list-item;
-    margin-left: 6rem;
+    }
 
-    @media (max-width: 550px) {
-      margin-left: 5rem;
+    &--2 {
+
     }
   }
 }

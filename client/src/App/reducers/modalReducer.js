@@ -2,31 +2,26 @@ import {
   MODAL_ISOPEN_REQUEST,
   MODAL_ISOPEN_SUCCESS,
   MODAL_ISOPEN_FAIL,
-  MODAL_SETPROJECT_REQUEST,
-  MODAL_SETPROJECT_SUCCESS,
-  MODAL_SETPROJECT_FAIL,
-  MODAL_SETPROJECT_RESET,
+  TOGGLE_THEME_REQUEST,
+  TOGGLE_THEME_SUCCESS,
+  TOGGLE_THEME_FAIL,
 } from "../constants/modalConstants";
 
-export function modalSetProjectReducer(state = {project: {}}, action) {
+export function themeReducer(state = {darkMode: true}, action) {
   switch (action.type) {
-    case MODAL_SETPROJECT_REQUEST:
+    case TOGGLE_THEME_REQUEST:
       return { loading: true, ...state };
 
-    case MODAL_SETPROJECT_SUCCESS:
-      return { loading: false, project: action.payload };
+    case TOGGLE_THEME_SUCCESS:
+      return { loading: false, darkMode: action.payload };
 
-    case MODAL_SETPROJECT_FAIL:
+    case TOGGLE_THEME_FAIL:
       return { loading: false, error: action.payload };
-
-    case MODAL_SETPROJECT_RESET:
-      return { project: {} };
 
     default:
       return state;
   }
 }
-
 
 export function modalIsOpenReducer(state = {isOpen: false}, action) {
   switch (action.type) {

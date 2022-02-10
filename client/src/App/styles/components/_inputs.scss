@@ -6,9 +6,13 @@
     font-size: 2rem;
     border: none;
     height: 4rem;
-    background-color: $color-secondary;
-    color: $color-quaternary;
-    @include fadeInAnimated($delay: .1s)
+    background-color: var(--color-secondary);
+    color: var(--color-quaternary);
+    @include fadeInAnimated($delay: .1s);
+
+    &::placeholder {
+      color: var(--color-quintinary);
+    }
   }
   
   &__name {
@@ -31,12 +35,12 @@
   &__label {
 
     &--name {
-      color: white;
+      color: var(--white);
       justify-self: flex-start;
     }
   
     &--msg {
-      color: white;
+      color: var(--white);
       justify-self: flex-start;
       
     }

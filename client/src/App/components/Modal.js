@@ -1,65 +1,69 @@
 // react
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FaMoon, FaSun } from 'react-icons/fa'
 
 // actions
-import { modalToggleOpen } from "../actions/modalActions";
+import { modalToggleOpen, toggleTheme } from "../actions/modalActions";
 
 
 export default function Modal() {
+  const modalIsOpen = useSelector((state) => state.modalIsOpen);
+  const { isOpen } = modalIsOpen;
+  const theme = useSelector((state) => state.theme);
+  const { darkMode } = theme;
+  const [animation, setAnimation] = useState(isOpen);
+
   const dispatch = useDispatch();
   const node = useRef()
 
-  const modalIsOpen = useSelector((state) => state.modalIsOpen);
-  const { isOpen } = modalIsOpen;
-
-  const [animation, setAnimation] = useState(isOpen);
-
-  const handleClick = e => {
-
-    if(node.contains === undefined) {
-
-      if (node.current.contains(e.target)) {
-        // inside modal
-        return;
-      }
-    }
-
-    // outside modal 
-    if (isOpen) {
-      setAnimation(false)
-      window.setTimeout(() => {
-        dispatch(modalToggleOpen());
-      }, 900);
-    }
+  const handleCloseModal = e => {
+    e.preventDefault();
+    setAnimation(false)
+    window.setTimeout(() => {
+      dispatch(modalToggleOpen(false));
+    }, 900);
   };
 
-  useEffect(() => {     
-    window.setTimeout(() => {
-      document.addEventListener("click", handleClick);
-    }, 100);
+  const handleThemeChange = (e) => {
+    e.preventDefault();
+    dispatch(toggleTheme(!darkMode))
+  }
 
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-  }, []);
+  useEffect(() => {
+    // Accessing scss variables
+    const root = document.documentElement;
+    root?.style.setProperty("--color-primary", darkMode ? "#080808" : "#F0F0F0");
+    root?.style.setProperty("--color-secondary", darkMode ? "#282828" : "#989898");
+    root?.style.setProperty("--color-tertiary", darkMode ? "#989898" : "#282828");
+    root?.style.setProperty("--color-quaternary", darkMode ? "#F0F0F0" : "#080808");
+    root?.style.setProperty("--color-quintinary", darkMode ? "#989898ad" : "#080808");
+  }, [darkMode]);
+
   
-
   return (
     <section
       className="modal"
       style={{ animation: `${animation ? "fadeIn" : "fadeOut"} 1s` }}
-      // onAnimationEnd={onAnimationEnd}
     >
       <div className="modal__container" ref={node}>
-        <button className="modal__btn--close" onClick={(e) => handleClick(e)}>
+        <button className="modal__btn--close" onClick={(e) => handleCloseModal(e)}>
           X
         </button>
         <div className="modal__header">Settings</div>
-          <div className="modal__subheader--1">Name Color:</div>
-          <div className="modal__paragraph--1">Light Mode:</div>
-          <div className="modal__subheader--2">Color pattern:</div>
-          <div className="modal__paragraph--2">Light Mode:</div>
+        <section className="modal__container--options">
+          <div className="modal__option--1">
+            Theme:
+          </div>
+          <button onClick={(e) => handleThemeChange(e)} className="modal__btn--theme">
+            {darkMode ? <FaMoon className="icon__moon" size={35} /> : <FaSun className="icon__sun" size={35} />}
+          </button>
+          {/* <div className="modal__paragraph--1">Light Mode:</div> */}
+          <div className="modal__option--2">Show Clock:</div>
+          <input className="modal__input--1" type="checkbox" checked></input>
+          <div className="modal__option--3">Icon Spinning:</div>
+          <input className="modal__input--2" type="checkbox" checked></input>
+        </section>
       </div>
     </section>
   )
