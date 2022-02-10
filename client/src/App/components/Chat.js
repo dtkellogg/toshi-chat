@@ -18,9 +18,6 @@ export default function Chat({ socket }) {
 
   const { sockets } = useSelector((state) => state.sockets);
 
-  const userList = useSelector((state) => state.userList)
-  const { loading, error, users } = userList
-
   const modalIsOpen = useSelector((state) => state.modalIsOpen);
   const { isOpen } = modalIsOpen;
 
@@ -42,7 +39,7 @@ export default function Chat({ socket }) {
 
   return (
     <div className="chat__container">
-      <Nav socket={socket} users={users} />
+      <Nav socket={socket} />
       <Msgs name={name} socket={socket} />
       <NewMsg socket={socket} name={name} msgRef={msgRef} />
       { isOpen && <Modal /> }

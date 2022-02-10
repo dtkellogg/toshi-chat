@@ -31,21 +31,16 @@
 
 .chat {
   &__btn {
-    width: min-content;
-    cursor: pointer;
-    height: min-content;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 1rem;
-    background-color: transparent;
-    right: 3rem;
-    bottom: 2.75rem;
+    @include flexCenterCenter();
     @include fadeInAnimated($delay: 0.1s);
-    background: var(--color-quaternary);
+    width: min-content;
+    height: min-content;
+    cursor: pointer;
+    position: absolute;
+    right: 3rem;
+    border: none;
     border-radius: 3rem;
+    background: var(--color-quaternary);
   }
 }
 
