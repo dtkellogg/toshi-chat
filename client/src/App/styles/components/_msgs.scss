@@ -1,16 +1,16 @@
 .msg {
   &__person {
     &--self, &--other {
+      @include flexCenterCenter();
       margin: 0.25rem 0;
       color: var(--color-quaternary);
       padding: 0.5rem 1.25rem;
       border-radius: 2.5rem;
       min-height: 3.7rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-size: 1.8rem;
       flex-wrap: wrap;
+      overflow: scroll;
+      width: min-content;
     }
   
     &--self {
@@ -25,25 +25,24 @@
     }
 
     &--notification {
+      @include flexCenterCenter();
       margin: 0.25rem;
       color: color(--color-quaternary);
       padding: 0 0.75rem;
       height: 2.7rem;
       width: max-content;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       align-self: center;
       font-size: 1.5rem;
       text-align:center;
 
-      &:before, &:after {
-        display: inline-block;
-        content: "";
-        border-top: .01rem solid var(--color-quaternary);
-        width: 20vh;
-        margin: 0 2rem;
-      }
+      // these are for horizontal line decorations for a notification:
+      // &:before, &:after {
+      //   display: inline-block;
+      //   content: "";
+      //   border-top: .01rem solid var(--color-quaternary);
+      //   width: 20vh;
+      //   margin: 0 2rem;
+      // }
     }
   }
 

@@ -74,6 +74,7 @@
   &__container {
     &--self, &--other {
       @include flexCenterCenter($flex-direction: column);
+      max-width: 90vw;
     }
   
     &--self {
