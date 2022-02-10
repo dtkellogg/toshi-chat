@@ -58,11 +58,10 @@ export default function Modal() {
           <button onClick={(e) => handleThemeChange(e)} className="modal__btn--theme">
             {darkMode ? <FaMoon className="icon__moon" size={35} /> : <FaSun className="icon__sun" size={35} />}
           </button>
-          {/* <div className="modal__paragraph--1">Light Mode:</div> */}
-          <div className="modal__option--2">Show Clock:</div>
+          {/* <div className="modal__option--2">Show Clock:</div>
           <input className="modal__input--1" type="checkbox" checked></input>
           <div className="modal__option--3">Icon Spinning:</div>
-          <input className="modal__input--2" type="checkbox" checked></input>
+          <input className="modal__input--2" type="checkbox" checked></input> */}
         </section>
       </div>
     </section>

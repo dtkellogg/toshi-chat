@@ -46,7 +46,6 @@
     @include fadeInAnimated($delay: 0.1s);
     background: var(--color-quaternary);
     border-radius: 3rem;
-    border: 1px solid #1c89ff;
   }
 }
 
@@ -69,10 +68,10 @@
       position: absolute;
       top: 1.5rem;
       right: 1.5rem;
-      height: 3rem;
-      width: 3rem;
+      height: 2.5rem;
+      width: 2.5rem;
       line-height: 3.5rem;
-      font-size: 2rem;
+      font-size: 1.5rem;
       border-radius: 50%;
       transition: 0.15s;
       cursor: pointer;

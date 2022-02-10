@@ -41,11 +41,11 @@
     fill: var(--color-quaternary);
     border: none;
     background-color: transparent;
-    cursor: pointer;
   }
 
   &__back, &__settings {
     height: 3rem;
+    cursor: pointer;
   }
 
   &__back {
