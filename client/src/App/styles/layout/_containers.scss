@@ -31,6 +31,20 @@
       @include heightWidth100();
       padding: 0.5rem 0;
     }
+
+    &--details {
+      @include flexCenterCenter();
+      position: relative;
+    }
+
+    &--details[open] summary:after {
+      content: "  \2193";
+      cursor: pointer;
+    }
+
+    &--details:focus {
+      outline: none
+    }
   }
 }
 

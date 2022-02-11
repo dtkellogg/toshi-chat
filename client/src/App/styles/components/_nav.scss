@@ -1,24 +1,33 @@
-details {
-  display: flex;
-  align-items: center;
-  justify-content:center;
-}
+.nav {
+  &__details {
+    &--summary {
+      white-space: pre;
+      list-style: none;
+      cursor: pointer;
+    }
 
-details > summary {
-  white-space: pre;
-  list-style: none;
-  cursor: pointer;
-}
-summary::-webkit-details-marker {
-  display: none
-}
+    &--summary::-webkit-details-marker {
+      display: none
+    }
 
-summary::after {
-  content: '  ►';
-  cursor: pointer;
-}
+    &--summary::after {
+      content: '  \2192';
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+    }
 
-details[open] summary:after {
-  content: "  ▼";
-  cursor: pointer;
+    &--users {
+      position: absolute;
+      width: max-content;
+      padding: 1rem;
+      background-color: var(--color-secondary);
+      color: var(--blue);
+      font-size: 2.0rem;
+      border-radius: 1.1rem;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translate(-50%, 1rem)
+    }
+  }
 }

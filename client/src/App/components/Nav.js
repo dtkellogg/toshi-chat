@@ -45,9 +45,9 @@ function Nav({ name, socket }) {
           <section className="nav__container--user-info">
             <FaUserCircle className="icon__circle" size={35} key={uuid()} />
           </section>
-          <details className="nav__span--num-users">
-            <summary>{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</summary>
-            <p>{[...users].join(", ")}</p>
+          <details className="nav__container--details">
+            <summary className="nav__details--summary">{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</summary>
+            <p className="nav__details--users">{[...users].join(", ")}</p>
           </details>
         </section>
       <FaCog className="icon__settings" onClick={(e) => handleSettingsClick(e)} aria-label="Back button" size={50} />

@@ -18,7 +18,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use(cors())  // CORS
+app.use(cors())
 app.use(corsMiddleware);
 
 
@@ -65,6 +65,5 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", (name) => {
     socket.broadcast.emit('msg', 'notification', `user has left the chat`, null)
-
   });
 });
