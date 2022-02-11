@@ -19,8 +19,7 @@ function Nav({ socket }) {
   const handleBackClick = async (e) => {
     e.preventDefault();
     let res = await dispatch(removeFromUsers(socket.id))
-    socket.emit('user-left')
-    // dispatch(listUsers())
+    socket.emit('user-left', res)
     navigate('/');
   }
 

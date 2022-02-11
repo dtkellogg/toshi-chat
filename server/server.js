@@ -73,12 +73,12 @@ io.on("connection", (socket) => {
     socket.broadcast.emit('msg', 'notification', `${name} has entered the chat`, null)
   })
 
-  socket.on('user-left', (name, deletedUser) => {
+  socket.on('user-left', (name) => {
     // const user = userMap.get(socket.id)
     // const userIdx = users.indexOf(user)
     // userMap.delete(socket.id)
     // users.splice(userIdx, 1)
-    socket.broadcast.emit('msg', 'notification', `${deletedUser} has left the chat`, null)
+    socket.broadcast.emit('msg', 'notification', `${name} has left the chat`, null)
   })
 
   socket.on("disconnect", (name) => {

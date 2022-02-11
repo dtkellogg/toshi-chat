@@ -53,6 +53,10 @@ export const addToUsers = ( socket, user ) => async (dispatch) => {
       type: USERS_ADD_SUCCESS,
       payload: data,
     })
+    dispatch({ 
+      type: USER_LIST_SUCCESS,
+      payload: data
+    })
   } catch (error) {
     const message =
       error.response && error.response.data.message
