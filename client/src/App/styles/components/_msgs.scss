@@ -2,15 +2,15 @@
   &__person {
     &--self, &--other {
       @include flexCenterCenter();
-      margin: 0.25rem 0;
       color: var(--color-quaternary);
+      margin: 0.25rem 0;
       padding: 0.5rem 1.25rem;
       border-radius: 2.5rem;
       min-height: 3.7rem;
       font-size: 1.8rem;
       flex-wrap: wrap;
       overflow: scroll;
-      width: min-content;
+      max-width: 100%;
     }
   
     &--self {
@@ -20,14 +20,13 @@
   
     &--other {
       background-color: var(--color-senary);
-      // background-color: grey;
       align-self: flex-start;
     }
 
     &--notification {
       @include flexCenterCenter();
+      color: var(--color-quaternary);
       margin: 0.25rem;
-      color: color(--color-quaternary);
       padding: 0 0.75rem;
       height: 2.7rem;
       width: max-content;

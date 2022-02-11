@@ -1,3 +1,5 @@
+// ---------------------- fade ---------------------- //
+
 @keyframes fadeIn {
   from {opacity: 0}
   to {opacity: 1}
@@ -6,4 +8,19 @@
 @keyframes fadeOut {
   from {opacity: 1}
   to {opacity: 0}
+}
+// ---------------------- settings-spinner ---------------------- //
+/*    Settings Icon    */
+
+@-moz-keyframes spin { 
+  100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+  100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+  100% { 
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg); 
+  } 
 }

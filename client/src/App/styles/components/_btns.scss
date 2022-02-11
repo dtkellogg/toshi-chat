@@ -6,7 +6,7 @@
     display: block;
     height: 4rem;
     border-radius: 18px;
-    background-color: #1c89ff;
+    background-color: var(--blue);
     border: solid 1px transparent;
     color: var(--color-quaternary);
     font-size: 2rem;
@@ -34,21 +34,21 @@
     @include flexCenterCenter();
     @include fadeInAnimated($delay: 0.1s);
     width: min-content;
-    height: min-content;
     cursor: pointer;
     position: absolute;
     right: 3rem;
     border: none;
     border-radius: 3rem;
     background: var(--color-quaternary);
-  }
-}
+    transition: all 0.1s linear;
 
-.msg {
-  &__input {
-    &--btn {
-      fill: var(--blue);
-      transform: scale(1.06);
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(.1px);
     }
   }
 }
@@ -58,7 +58,6 @@
 .modal {
   &__btn {
     &--close {
-      // @extend %btn;
       @include flexCenterCenter();
       position: absolute;
       top: 1.5rem;
@@ -75,6 +74,7 @@
       background: var(--red-1);
       border: 1px solid var(--red-2);
 
+      
       &:hover {
         transition: 0.15s;
       }

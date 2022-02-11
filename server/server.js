@@ -10,31 +10,32 @@ const cors = require("cors")
 const { corsMiddleware } = require('./middleware/corsMiddleware')
 
 // Routes
-const socketRoutes = require('./routes/socketRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 
-dotenv.config();  // env variables
+dotenv.config();
 
 const app = express();
+
 app.use(express.json());
 app.use(cors())  // CORS
 app.use(corsMiddleware);
 
-const userMap = new Map()
-const users = []
+let userMap = new Map()
+let users = []
 
-app.get('/api/users', (req, res) => {
-  console.log('USERS!!!!!');
-  console.log(users);
-  for(const user of userMap.values()) {
-    if(!users.includes(user)) users.push(user)
-  }
-  console.log("SERVER USERS".red);
-  console.log(users);
-  res.json(users)
-})
+// app.get('/api/users', (req, res) => {
+//   console.log('USERS!!!!!');
+//   console.log(users);
+//   for(const user of userMap.values()) {
+//     if(!users.includes(user)) users.push(user)
+//   }
+//   console.log("SERVER USERS".red);
+//   console.log(users);
+//   res.json(users)
+// })
 
-app.use('/api/sockets', socketRoutes)
+app.use('/api/users', userRoutes)
 
 //------------------------------- static build files for react side of app -------------------------------//
 
@@ -68,22 +69,24 @@ io.on("connection", (socket) => {
   })
 
   socket.on('new-user', (name) => {
-    userMap.set(socket.id, name)
+    // userMap.set(socket.id, name)
     socket.broadcast.emit('msg', 'notification', `${name} has entered the chat`, null)
   })
 
-  socket.on('user-left', () => {
-    const user = userMap.get(socket.id)
-    const userIdx = users.indexOf(user)
-    userMap.delete(socket.id)
-    users.splice(userIdx, 1)
-    socket.broadcast.emit('msg', 'notification', `${user} has left the chat`, null)
+  socket.on('user-left', (name, deletedUser) => {
+    // const user = userMap.get(socket.id)
+    // const userIdx = users.indexOf(user)
+    // userMap.delete(socket.id)
+    // users.splice(userIdx, 1)
+    socket.broadcast.emit('msg', 'notification', `${deletedUser} has left the chat`, null)
   })
 
   socket.on("disconnect", (name) => {
-    console.log(`disconnect: ${socket.id}`);
-    userMap.get(socket.id) && socket.broadcast.emit('msg', 'notification', `${userMap.get(socket.id)} has left the chat`, null)
-    userMap.delete(socket.id)
-    console.log(userMap.size);
+    // console.log(`disconnect: ${socket.id}`);
+    // userMap.get(socket.id) && socket.broadcast.emit('msg', 'notification', `${userMap.get(socket.id)} has left the chat`, null)
+    // userMap.delete(socket.id)
+    // console.log(userMap.size);
+    socket.broadcast.emit('msg', 'notification', `user has left the chat`, null)
+
   });
 });

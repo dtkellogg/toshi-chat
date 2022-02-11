@@ -1,37 +1,35 @@
 // ---------------------- main ---------------------- //
 
-.container {
-
-  &__main {
+.main {
+  &__container {
     @include flexCenterCenter();
+    background: var(--color-primary);
     width: 100%;
     min-height: 100vh;
-    background: var(--color-primary);
     text-align: center;
     position: relative;
   }
+}
 
-  &__chat {
-    &--nav {
-      @include fadeInAnimated($delay: .1s);
-      background-color: var(--color-secondary);
-      height: 7rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-    }
-  }
+// ---------------------- main ---------------------- //
 
-  &__nav {
+.nav {
+  &__container {
+    @include flexCenterCenter($align-items: center, $justify-content: space-around);
+    @include fadeInAnimated($delay: .1s);
+    background-color: var(--color-secondary);
+    height: 7rem;
+
     &--users {
       @include flexCenterCenter($flex-direction: column);
       @include heightWidth100();
       padding: 0.5rem 0;
     }
 
-    &--user-icons {
-      @include flexCenterCenter();
+    &--user-info {
+      @include flexCenterCenter($flex-direction: column);
       @include heightWidth100();
+      padding: 0.5rem 0;
     }
   }
 }
@@ -59,6 +57,8 @@
   }
 }
 
+// ---------------------- msgs ---------------------- //
+
 .msgs {
   &__container {
     @include heightWidth100();
@@ -69,6 +69,8 @@
     flex: 1;
   }
 }
+
+// ---------------------- msg input ---------------------- //
 
 .msg {
   &__container {
@@ -111,24 +113,11 @@
       height: 3.75rem;
       width: 100%;
       overflow: scroll;
-      // margin: 0 auto;
       border-radius: 1rem;
       height: 15rem;
       position: relative;
       height: min-content;
     }
-  }
-}
-
-.inputs {
-  &__container {
-    display: grid;
-    grid-template-columns: 5rem 1fr;
-    grid-template-rows: repeat(2, 3.25rem);
-    width: 90%;
-    margin: auto;
-    align-items: center;
-    margin-top: 1.5rem;
   }
 }
 
@@ -157,11 +146,9 @@
       gap: 4rem;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
-      // grid-template-rows: repeat(3, 1fr);
 			width: 100%;
       justify-items: center;
       align-items: center;
-
 		}
 	}
 }

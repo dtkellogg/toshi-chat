@@ -1,13 +1,10 @@
 .modal {
+  @include heightWidth100();
+  @include flexCenterCenter();
 	position: absolute;
-	height: 100%;
-	width: 100%;
 	background-color: rgba(0, 0, 0, 0.685);
 	z-index: 99999999999;
 	transition: all 2s;
-    display: flex;
-  align-items: center;
-  justify-content: center;
 
 	&__skills {
 		&--item {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Upload() {
+export default function UploadBtn() {
   const [img, setImg] = useState({})
 
   const fileOnChange = (e) => {

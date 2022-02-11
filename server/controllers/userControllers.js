@@ -2,44 +2,44 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const mongoose = require("mongoose");
 
+let userMap = new Map()
+let users = []
 
-const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find({});
-  res.json(users);
-})
 
-const addUser = asyncHandler(async (req, res) => {
-  const { socket, name } = req.body
 
-  const user = await User.create({
-    socket,
-    name
-  })
+const getUsers = async (req, res) => {
 
-  if (user) {
-    res.status(201).json({
-      socket: user.socket,
-      name: user.name
-    });
-  } else {
-    res.status(400)
-    throw new Error('Invalid user data.')
+  console.log("USERS CONTROLLER - USERS");
+console.log(users);
+
+  for(const user of userMap.values()) {
+    if(!users.includes(user)) users.push(user)
   }
-})
+  res.json(users)
+}
 
-// const deleteUser = asyncHandler(async (req, res) => {
-//   const appointment = await Socket.findById(req.params.id)
+const addToUsers = (req, res) => {
+  const { socket, user } = req.body
 
-//   if (appointment) {
-//     await appointment.remove()
-//     res.json({ message: 'Appointment removed' })
-//   } else {
-//     res.status(404)
-//     throw new Error('Appointment not found')
-//   }
-// })
+  userMap.set(socket, user)
+}
+
+const removeFromUsers = (req, res) => {
+  const { socket } = req.body
+
+  const user = userMap.get(socket)
+  const userIdx = users.indexOf(user)
+  userMap.delete(socket)
+  users.splice(userIdx, 1)
+
+  console.log("REMOVE USERS CONTROLLER")
+  console.log(users)
+  res.json(users)
+
+}
 
 module.exports = {
   getUsers,
-  addUser
+  addToUsers,
+  removeFromUsers
 }

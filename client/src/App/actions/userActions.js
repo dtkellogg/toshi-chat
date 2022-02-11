@@ -3,9 +3,12 @@ import {
   USER_LIST_REQUEST,
   USER_LIST_SUCCESS,
   USER_LIST_FAIL,
-  USER_CREATE_FAIL,
-  USER_CREATE_SUCCESS,
-  USER_CREATE_REQUEST,
+  USERS_ADD_FAIL,
+  USERS_ADD_SUCCESS,
+  USERS_ADD_REQUEST,
+  USERS_DELETE_REQUEST,
+  USERS_DELETE_SUCCESS,
+  USERS_DELETE_FAIL,
 } from "../constants/userConstants";
 
 
@@ -33,26 +36,21 @@ export const listUsers = () => async (dispatch) => {
   }
 }
 
-export const createUser = ( user ) => async (dispatch, getState) => {
+export const addToUsers = ( socket, user ) => async (dispatch) => {
   try {
     dispatch({
-      type: USER_CREATE_REQUEST,
+      type: USERS_ADD_REQUEST,
     })
 
-    const {
-      userLogin: { userInfo },
-    } = getState()
+  console.log(`socket: ${socket}, user: ${user}`);
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
+    // socket = JSON.stringify(socket)
 
-    const { data } = await axios.post(`/api/users`, { user }, config)
+
+    const { data } = await axios.post(`/api/users`, { socket, user })
 
     dispatch({
-      type: USER_CREATE_SUCCESS,
+      type: USERS_ADD_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -61,7 +59,36 @@ export const createUser = ( user ) => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message
     dispatch({
-      type: USER_CREATE_FAIL,
+      type: USERS_ADD_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const removeFromUsers = ( socket ) => async (dispatch) => {
+  try {
+    dispatch({
+      type: USERS_DELETE_REQUEST,
+    })
+
+    const { data } = await axios.delete(`/api/users`, { socket })
+
+    console.log("REMOVE FROM USERS ACTION");
+    console.log(data);
+
+    // dispatch(listUsers())
+
+    dispatch({
+      type: USERS_DELETE_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message
+    dispatch({
+      type: USERS_DELETE_FAIL,
       payload: message,
     })
   }

@@ -8,15 +8,14 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 // reducers
-import { userListReducer, userCreateReducer } from './reducers/userReducers';
-import { socketsReducer } from './reducers/socketReducers';
+import { userListReducer, addToUsersReducer, deleteFromUsersReducer } from './reducers/userReducers';
 import { modalIsOpenReducer, themeReducer } from "./reducers/modalReducer";
 
 
 const reducer = combineReducers({
   userList: userListReducer,
-  userCreate: userListReducer,
-  sockets: socketsReducer,
+  addToUsers: addToUsersReducer,
+  deleteFromUsers: deleteFromUsersReducer,
   modalIsOpen: modalIsOpenReducer,
   theme: themeReducer
 })
