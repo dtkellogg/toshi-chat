@@ -36,7 +36,7 @@ export default function Chat({ socket }) {
 
   return (
     <div className="chat__container">
-      <Nav socket={socket} />
+      <Nav socket={socket} name={name} />
       <Msgs name={name} socket={socket} />
       <MsgInput socket={socket} name={name} msgRef={msgRef} />
       { isOpen && <Modal /> }

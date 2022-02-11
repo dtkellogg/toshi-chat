@@ -8,18 +8,21 @@ import { removeFromUsers, listUsers } from "../actions/userActions"
 
 
 
-function Nav({ socket }) {
+function Nav({ name, socket }) {
   const userList = useSelector((state) => state.userList)
   const { loading, error, users } = userList
+
+  const deleteFromUsers = useSelector((state) => state.deleteFromUsers)
+  const { loading: deleteUserLoading, success: deleteUserSuccess, error: deleteUserError } = deleteFromUsers
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
 
-  const handleBackClick = async (e) => {
+  const handleBackClick = (e) => {
     e.preventDefault();
-    let res = await dispatch(removeFromUsers(socket.id))
-    socket.emit('user-left', res)
+    dispatch(removeFromUsers(socket.id))
+    socket.emit('user-left', name)
     navigate('/');
   }
 
@@ -27,6 +30,13 @@ function Nav({ socket }) {
     e.preventDefault();
     dispatch(modalToggleOpen(true))
   }
+
+  useEffect(() => {
+    console.log(`deleteUserSuccess: ${deleteUserSuccess}`)
+    if(deleteUserSuccess) {
+      dispatch(listUsers())
+    };
+  }, [deleteUserSuccess])
 
   return (
     <nav className="nav__container">

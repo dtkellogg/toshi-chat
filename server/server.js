@@ -21,21 +21,9 @@ app.use(express.json());
 app.use(cors())  // CORS
 app.use(corsMiddleware);
 
-let userMap = new Map()
-let users = []
-
-// app.get('/api/users', (req, res) => {
-//   console.log('USERS!!!!!');
-//   console.log(users);
-//   for(const user of userMap.values()) {
-//     if(!users.includes(user)) users.push(user)
-//   }
-//   console.log("SERVER USERS".red);
-//   console.log(users);
-//   res.json(users)
-// })
 
 app.use('/api/users', userRoutes)
+
 
 //------------------------------- static build files for react side of app -------------------------------//
 
@@ -62,30 +50,20 @@ const io = socketIo(server, {cors: {origin: process.env.NODE_ENV === "developmen
 
 io.on("connection", (socket) => {
   console.log(`${io.engine.clientsCount} connections`);
-  console.log(userMap);
 
   socket.on('chat', (msg, name) => {
     io.sockets.emit('msg', 'new-msg', msg, name)
   })
 
   socket.on('new-user', (name) => {
-    // userMap.set(socket.id, name)
     socket.broadcast.emit('msg', 'notification', `${name} has entered the chat`, null)
   })
 
   socket.on('user-left', (name) => {
-    // const user = userMap.get(socket.id)
-    // const userIdx = users.indexOf(user)
-    // userMap.delete(socket.id)
-    // users.splice(userIdx, 1)
     socket.broadcast.emit('msg', 'notification', `${name} has left the chat`, null)
   })
 
   socket.on("disconnect", (name) => {
-    // console.log(`disconnect: ${socket.id}`);
-    // userMap.get(socket.id) && socket.broadcast.emit('msg', 'notification', `${userMap.get(socket.id)} has left the chat`, null)
-    // userMap.delete(socket.id)
-    // console.log(userMap.size);
     socket.broadcast.emit('msg', 'notification', `user has left the chat`, null)
 
   });

@@ -74,17 +74,14 @@ export const removeFromUsers = ( socket ) => async (dispatch) => {
     dispatch({
       type: USERS_DELETE_REQUEST,
     })
+    
+    console.log("USERS ACTION- REMOVE");
+    console.log(`socket: ${socket}`);
 
-    const { data } = await axios.delete(`/api/users`, { socket })
-
-    console.log("REMOVE FROM USERS ACTION");
-    console.log(data);
-
-    // dispatch(listUsers())
+    await axios.delete(`/api/users/${socket}`)
 
     dispatch({
       type: USERS_DELETE_SUCCESS,
-      payload: data,
     })
   } catch (error) {
     const message =
