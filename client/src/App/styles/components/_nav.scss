@@ -4,6 +4,8 @@
       white-space: pre;
       list-style: none;
       cursor: pointer;
+      display: flex;
+      align-items: center;
     }
 
     &--summary:focus {
@@ -15,7 +17,7 @@
     }
 
     &--summary::after {
-      content: '  \2192';
+      // content: '  \2192';
       font-weight: bold;
       cursor: pointer;
       display: inline-block;
@@ -33,6 +35,17 @@
       -webkit-transform: translateX(-50%);
       transform: translate(-50%, 1rem);
       opacity: 0.98;
+      transition: all 0.1s linear;
+      @include fadeInAnimated($delay: 0s);
+    }
+
+    &--users::selection {
+      background: var(--color-secondary);
+    }
+
+    &--num-users {
+      margin-right: 4px;
+      font-size: 11px;
     }
   }
 }

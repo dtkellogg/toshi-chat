@@ -36,4 +36,8 @@
       transform: scale(1.06);
     }
   }
+
+  &__right {
+    transition: .25s transform ease;
+  }
 }

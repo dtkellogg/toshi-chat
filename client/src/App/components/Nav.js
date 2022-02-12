@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { FaChevronLeft, FaUserCircle, FaCog } from 'react-icons/fa'
+import { FaChevronRight, FaChevronLeft, FaChevronDown, FaUserCircle, FaCog } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { v4 as uuid } from 'uuid';
 import { modalToggleOpen } from "../actions/modalActions"
@@ -46,7 +46,10 @@ function Nav({ name, socket }) {
             <FaUserCircle className="icon__circle" size={35} key={uuid()} />
           </section>
           <details className="nav__container--details">
-            <summary className="nav__details--summary">{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</summary>
+            <summary className="nav__details--summary">
+              <span className="nav__details--num-users">{`${users.length} ${users.length === 1 ? 'Person' : 'People'}`}</span>
+              <FaChevronRight className="icon__right" aria-label="Open users list button" size={10} />
+              </summary>
             <p className="nav__details--users">{[...users].join(", ")}</p>
           </details>
         </section>

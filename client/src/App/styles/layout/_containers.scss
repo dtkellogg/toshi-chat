@@ -37,9 +37,8 @@
       position: relative;
     }
 
-    &--details[open] summary:after {
-      content: "  \2193";
-      cursor: pointer;
+    &--details[open] .icon__right {
+      transform: rotate(90deg);
     }
 
     &--details:focus {
