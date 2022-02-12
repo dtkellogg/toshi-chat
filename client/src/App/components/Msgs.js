@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { listUsers } from '../actions/userActions'
+import { removeFromUsers, listUsers } from "../actions/userActions"
+import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuid } from 'uuid'
 
 
 export default function Msgs({ name: currentUser, socket }) {
   const [msgs, setMsgs] = useState([])
+  const deleteFromUsers = useSelector((state) => state.deleteFromUsers)
+  const { loading: deleteUserLoading, success: deleteUserSuccess, error: deleteUserError } = deleteFromUsers
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -29,15 +32,30 @@ export default function Msgs({ name: currentUser, socket }) {
           setMsgs((oldMsgs) => [...oldMsgs, {
             type: type,
             msg: msg,
-            name: null,
+            name: name,
             time: new Date().toLocaleTimeString([], {
               hour: '2-digit',
               minute:'2-digit'
             }).trim()
           }])
+          
           dispatch(listUsers())
           }
-        } 
+      },
+      socket.on("user-disconnected", (id, name) => {
+        console.log(`name: ${name}, id: ${id}`);
+        dispatch(removeFromUsers(id))
+        // socket.emit('user-left', name)
+        setMsgs((oldMsgs) => [...oldMsgs, {
+          type: 'notification',
+          msg: `${name} has left the chat`,
+          name: null,
+          time: new Date().toLocaleTimeString([], {
+              hour: '2-digit',
+              minute:'2-digit'
+            }).trim()
+          }])
+        })
       )
     }
   }, [socket])
@@ -46,6 +64,13 @@ export default function Msgs({ name: currentUser, socket }) {
     var objDiv = document.getElementById("msg-container");
     objDiv.scrollTop = objDiv.scrollHeight;
   }, [msgs])
+
+  useEffect(() => {
+    console.log(`deleteUserSuccess: ${deleteUserSuccess}`)
+    if(deleteUserSuccess) {
+      dispatch(listUsers())
+    };
+  }, [deleteUserSuccess])
 
   // console.log("----------------------MESSAGES----------------------");
   // console.log(msgs);

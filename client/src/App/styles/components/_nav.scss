@@ -6,6 +6,10 @@
       cursor: pointer;
     }
 
+    &--summary:focus {
+      outline: none
+    }
+
     &--summary::-webkit-details-marker {
       display: none
     }
@@ -27,7 +31,8 @@
       border-radius: 1.1rem;
       left: 50%;
       -webkit-transform: translateX(-50%);
-      transform: translate(-50%, 1rem)
+      transform: translate(-50%, 1rem);
+      opacity: 0.98;
     }
   }
 }

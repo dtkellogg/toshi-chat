@@ -50,12 +50,15 @@ const io = socketIo(server, {cors: {origin: process.env.NODE_ENV === "developmen
 
 io.on("connection", (socket) => {
   console.log(`${io.engine.clientsCount} connections`);
+  socketID = socket.id;
+  const userMap = new Map();
 
   socket.on('chat', (msg, name) => {
     io.sockets.emit('msg', 'new-msg', msg, name)
   })
 
   socket.on('new-user', (name) => {
+    userMap.set(socket.id, name)
     socket.broadcast.emit('msg', 'notification', `${name} has entered the chat`, null)
   })
 
@@ -63,7 +66,9 @@ io.on("connection", (socket) => {
     socket.broadcast.emit('msg', 'notification', `${name} has left the chat`, null)
   })
 
-  socket.on("disconnect", (name) => {
-    socket.broadcast.emit('msg', 'notification', `user has left the chat`, null)
+  socket.on("disconnect", () => {
+    const id = socket.id
+    const name = userMap.get(id)
+    socket.broadcast.emit('user-disconnected', id, name)
   });
 });
