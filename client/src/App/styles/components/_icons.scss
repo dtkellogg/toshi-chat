@@ -8,6 +8,11 @@
   &__back, &__settings {
     height: 3rem;
     cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  &__back:hover, &__settings:hover, &__right:hover {
+    transform: scale(1.2);
   }
 
   &__back {

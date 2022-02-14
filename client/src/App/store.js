@@ -24,7 +24,6 @@ const initialState = {
   userList: {
     users: []
   },
-  sockets: {sockets: []},
 }
 
 const middleware = [thunk];

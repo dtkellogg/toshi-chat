@@ -29,6 +29,7 @@ function App() {
               <Route exact path="/" element={<Login socket={socket}/>} />
               <Route path="/chat" element={<Chat socket={socket}/>} />
               <Route path="/upload" element={<UploadBtn />} />
+              <Route path="*" element={<Login />} />
             </Routes>
           </CSSTransition>
           </TransitionGroup>

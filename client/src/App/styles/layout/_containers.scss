@@ -11,7 +11,7 @@
   }
 }
 
-// ---------------------- main ---------------------- //
+// ---------------------- nav ---------------------- //
 
 .nav {
   &__container {
@@ -83,8 +83,6 @@
   }
 }
 
-// ---------------------- msg input ---------------------- //
-
 .msg {
   &__container {
     &--self, &--other {
@@ -116,6 +114,18 @@
     &--header-other {
       justify-content: flex-start;
       margin-left: 8px;
+    }
+
+    &--notification {
+      @include flexCenterCenter();
+      color: var(--color-quaternary);
+      margin: 1.25rem;
+      padding: 0 0.75rem;
+      height: 2.7rem;
+      width: max-content;
+      align-self: center;
+      font-size: 1.5rem;
+      text-align:center;
     }
   }
 

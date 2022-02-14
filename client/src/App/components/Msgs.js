@@ -45,7 +45,6 @@ export default function Msgs({ name: currentUser, socket }) {
       socket.on("user-disconnected", (id, name) => {
         console.log(`name: ${name}, id: ${id}`);
         dispatch(removeFromUsers(id))
-        // socket.emit('user-left', name)
         setMsgs((oldMsgs) => [...oldMsgs, {
           type: 'notification',
           msg: `${name} has left the chat`,
@@ -65,15 +64,13 @@ export default function Msgs({ name: currentUser, socket }) {
     objDiv.scrollTop = objDiv.scrollHeight;
   }, [msgs])
 
-  useEffect(() => {
-    console.log(`deleteUserSuccess: ${deleteUserSuccess}`)
-    if(deleteUserSuccess) {
-      dispatch(listUsers())
-    };
-  }, [deleteUserSuccess])
+  // useEffect(() => {
+  //   console.log(`deleteUserSuccess: ${deleteUserSuccess}`)
+  //   if(deleteUserSuccess) {
+  //     dispatch(listUsers())
+  //   };
+  // }, [deleteUserSuccess])
 
-  // console.log("----------------------MESSAGES----------------------");
-  // console.log(msgs);
 
   return (
     <div className="msgs__container" id="msg-container">
@@ -84,8 +81,9 @@ export default function Msgs({ name: currentUser, socket }) {
 
         return (
           (type === 'notification') ? (
-            <div className="msg__person--notification" key={uuid()}>
-              <span className="">{msg} ({time})</span>
+            <div className="msg__container--notification" key={uuid()}>
+              <span className="msg__notification--msg">{msg}</span>
+              <span className="msg__notification--time">{time}</span>
             </div>
           ) : sameUser ? (
             <section className="msg__container--self" key={uuid()}>
