@@ -20,8 +20,6 @@ export default function Chat({ socket }) {
     if(!name || socket === undefined) {
       navigate('/')
     } else {
-      console.log(`socket: ${socket}`)
-      console.log(socket.id)
       dispatch(addToUsers(socket.id, name))
       socket.emit('new-user', name)
       dispatch(listUsers())

@@ -3,7 +3,7 @@
     &--self, &--other {
       @include flexCenterCenter();
       color: var(--color-quaternary);
-      margin: 0.25rem 0;
+      margin-top: 0.5rem;
       padding: 0.5rem 1.25rem;
       border-radius: 2.5rem;
       min-height: 3.7rem;

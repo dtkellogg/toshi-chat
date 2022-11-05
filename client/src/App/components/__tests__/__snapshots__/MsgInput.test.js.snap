@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for MsgInput Component matches snapshot 1`] = `
+<form
+  className="msg__input--container"
+>
+  <input
+    className="input__msg"
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    placeholder="message"
+    rows="3"
+    type="text"
+    value=""
+  />
+  <button
+    aria-label="Send Message"
+    className="chat__btn"
+    disabled={true}
+    onClick={[Function]}
+    type="submit"
+  >
+    <FaArrowAltCircleUp
+      className="icon__arrow--up"
+      name="send-msg"
+      size={30}
+    />
+  </button>
+</form>
+`;

@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
 import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom'
+// import {}
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+
+describe('App.js renders without error', () => {
+  it('Renders the outer main__container div', () => {
+    const wrapper = shallow(<Router><App /></Router>);
+    console.log(wrapper.firstChild);
+    expect(wrapper.firstChild).toHaveClass("main__container")
+  })
+})

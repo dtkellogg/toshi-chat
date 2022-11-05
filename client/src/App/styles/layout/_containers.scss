@@ -88,16 +88,67 @@
     &--self, &--other {
       @include flexCenterCenter($flex-direction: column);
       max-width: 90vw;
+      position: relative;
     }
   
     &--self {
       align-self: flex-end;
       margin-right: 0.5rem;
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 2rem;
+      }
+      &:before {
+        z-index: 0;
+        right: -.95rem;
+        width: 2rem;
+        background: var(--blue);
+        border-right: .1rem solid white !important;
+        border-bottom-left-radius: 1.5rem;
+      }
+      &:after {
+        z-index: 1;
+        right: -1rem;
+        width: 1rem;
+        background: var(--color-primary);
+        border-bottom-left-radius: 1rem;
+        height: 2.2rem;
+      }
     }
   
     &--other {
       align-self: flex-start;
       margin-left: 0.5rem;
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 2rem;
+      }
+    
+      &:before {
+        z-index: 0;
+        left: -.95rem;
+        width: 2rem;
+        background: var(--color-senary);
+        border-left: .1rem solid white !important;
+        border-bottom-right-radius: 1.5rem;
+      }
+    
+      &:after {
+        z-index: 1;
+        left: -1rem;
+        width: 1rem;
+        background: var(--color-primary);
+        border: none !important;
+        border-bottom-right-radius: 1rem;
+        height: 2.2rem;
+      }
     }
 
     &--header-self, &--header-other {

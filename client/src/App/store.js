@@ -9,7 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 // reducers
 import { userListReducer, addToUsersReducer, deleteFromUsersReducer } from './reducers/userReducers';
-import { modalIsOpenReducer, themeReducer } from "./reducers/modalReducer";
+import { modalIsOpenReducer, themeReducer } from "./reducers/modalReducers";
 
 
 const reducer = combineReducers({

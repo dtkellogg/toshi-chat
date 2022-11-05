@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for Loading Component matches snapshot 1`] = `
+<div
+  className="loading"
+  style={
+    Object {
+      "width": "100vw",
+    }
+  }
+>
+  <h1>
+    Loading...
+  </h1>
+</div>
+`;

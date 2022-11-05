@@ -61,15 +61,11 @@ export default function Msgs({ name: currentUser, socket }) {
 
   useEffect(() => {
     var objDiv = document.getElementById("msg-container");
+    console.log("Components - Msgs - objDiv")
+    console.log(objDiv)
+    console.log(objDiv.type)
     objDiv.scrollTop = objDiv.scrollHeight;
   }, [msgs])
-
-  // useEffect(() => {
-  //   console.log(`deleteUserSuccess: ${deleteUserSuccess}`)
-  //   if(deleteUserSuccess) {
-  //     dispatch(listUsers())
-  //   };
-  // }, [deleteUserSuccess])
 
 
   return (

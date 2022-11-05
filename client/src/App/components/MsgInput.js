@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaArrowAltCircleUp } from "react-icons/fa";
 
+
 export default function MsgInput({ socket, name, msgRef }) {
   const [msg, setMsg] = useState("")
 

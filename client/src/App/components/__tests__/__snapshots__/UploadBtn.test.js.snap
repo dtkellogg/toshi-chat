@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests for UploadBtn Component matches snapshot 1`] = `
+<div>
+  <img
+    src={Object {}}
+  />
+  <input
+    onChange={[Function]}
+    type="file"
+  />
+  <button
+    onClick={[Function]}
+  >
+    Upload
+  </button>
+</div>
+`;
